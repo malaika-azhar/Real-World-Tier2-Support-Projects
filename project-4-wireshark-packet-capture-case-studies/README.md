@@ -124,7 +124,7 @@ The resolver immediately reported a non-existent domain.
 dns
 dns.qry.name contains "nonexistentdomain"
 ```
-<p align="center"><img src="screenshots/ss-05-dns-filter-applied.PNG" width="600"></p>
+<p align="center"><img src="screenshots/s-05-dns-filter-applied.PNG" width="600"></p>
 
 **Step 5 — Inspect query and response packets** ✅
 The query packet (`Standard query A/AAAA`) and its matching response were expanded to confirm the reply code.
@@ -168,7 +168,7 @@ Hundreds of `[TCP Fast Retransmission]` packets appeared for the download stream
 **Step 9 — Inspect a retransmitted segment** ✅
 Expanded a flagged packet — the `Retransmitted TCP segment data` field confirms the segment was re-sent.
 
-<p align="center"><img src="screenshots/ss-12a-retransmitted-packet-detail.PNG" width="400"><img src="screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG" width="400"></p>
+<p align="center"><img src="screenshots/ss-12a-retransmitted-packet-detai.PNG" width="400"><img src="screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG" width="400"></p>
 
 🎯 **Root Cause**
 The slow/congested link caused packet loss, so the server (`141.95.207.211:443`) never received timely ACKs and re-sent the same segments.
@@ -200,7 +200,7 @@ arp
 ```
 Windows sent an **ARP Probe** (checking if the address was already in use) followed by an **ARP Announcement** for `192.168.100.38`.
 
-<p align="center"><img src="screenshots/ss-14-arp-probe-announcement.PNG" width="600"></p>
+<p align="center"><img src="screenshots/ss-14-arp-conflict-probe-announcement.PNG" width="600"></p>
 
 **Step 12 — Check for a conflicting reply** ✅
 ```
