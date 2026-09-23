@@ -2,7 +2,7 @@
 
 # 🎫 Real Ticketing System Deployment
 
-**Project 02 of 5 — Tier-2 Support Portfolio**
+**Project 01 of 4 — Tier-2 Support Portfolio**
 
 IT Helpdesk Deployment (osTicket on Azure)
 
@@ -17,7 +17,7 @@ IT Helpdesk Deployment (osTicket on Azure)
 
 A real IT helpdesk built on a live Azure VM: Ubuntu, Apache, MySQL and PHP installed by hand, osTicket v1.18.1 set up through its web installer, SLA plans and departments configured, and five support tickets run from the customer portal to the agent panel. Every result has a screenshot. Four tickets were closed and one was replied to but left open, and this README says so.
 
-### [📑 Open the visual index](index.html)
+### [📑 Open the visual index](osticket-INDEX.md)
 
 </div>
 
@@ -869,7 +869,7 @@ These gaps are marked in the project instead of being hidden, so the results sho
 ```text
 osticket-tier2-project/
 |-- README.md
-|-- index.html
+|-- osticket-INDEX.md
 `-- screenshots/
     |-- 01-azure-vm-overview.PNG
     |-- 02-lamp-stack-install.PNG

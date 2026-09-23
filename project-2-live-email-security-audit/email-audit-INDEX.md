@@ -1,9 +1,9 @@
 <a id="top"></a>
 <div align="center">
 
-# 📧 Project 03 — Index
+# 📧 Project 02 — Index
 ### Live Email Authentication Audit
-**Project 03 of 5 — Tier-2 Support Portfolio**
+**Project 02 of 4 — Tier-2 Support Portfolio**
 
 ![SPF](https://img.shields.io/badge/SPF-2EA043?style=for-the-badge)
 ![DKIM](https://img.shields.io/badge/DKIM-4A3FA6?style=for-the-badge)

@@ -2,7 +2,7 @@
 
 # 📧 Live Email Authentication Audit
 
-**Project 03 of 5 — Tier-2 Support Portfolio**
+**Project 02 of 4 — Tier-2 Support Portfolio**
 
 Email Security Audit (SPF · DKIM · DMARC)
 

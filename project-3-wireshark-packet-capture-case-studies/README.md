@@ -2,7 +2,7 @@
 
 # 🦈 Wireshark Packet Capture Case Studies
 
-**Project 04 of 5 — Tier-2 Support Portfolio**
+**Project 03 of 4 — Tier-2 Support Portfolio**
 
 Network Troubleshooting (Wireshark)
 
@@ -16,7 +16,7 @@ Network Troubleshooting (Wireshark)
 
 Three network problems captured live on a Windows PC and read packet by packet in Wireshark — a DNS lookup failure, TCP retransmissions during a large download, and Windows' ARP duplicate-IP check. Each result is backed by a screenshot, and every limit of the lab is written down.
 
-### [📑 Open the visual index](index.html)
+### [📑 Open the visual index](wireshark-INDEX.md)
 
 </div>
 
@@ -690,7 +690,7 @@ These gaps are marked in the project instead of being hidden, so the results sho
 ```text
 wireshark-case-studies-project/
 |-- README.md
-|-- index.html
+|-- wireshark-INDEX.md
 `-- screenshots/
     |-- ss-01-wireshark-interface-select.PNG
     |-- ss-02-capture-start.PNG

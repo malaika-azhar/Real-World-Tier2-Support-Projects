@@ -1,9 +1,9 @@
 <a id="top"></a>
 <div align="center">
 
-# 🔧 Project 05 — Index
+# 🔧 Project 04 — Index
 ### Open-Source Contribution — Uptime Kuma
-**Project 05 of 5 — Tier-2 Support Portfolio**
+**Project 04 of 4 — Tier-2 Support Portfolio**
 
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)

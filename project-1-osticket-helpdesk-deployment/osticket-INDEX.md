@@ -1,9 +1,9 @@
 <a id="top"></a>
 <div align="center">
 
-# 🎫 Project 02 — Index
+# 🎫 Project 01 — Index
 ### Real Ticketing System Deployment
-**Project 02 of 5 — Tier-2 Support Portfolio**
+**Project 01 of 4 — Tier-2 Support Portfolio**
 
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu_24.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)

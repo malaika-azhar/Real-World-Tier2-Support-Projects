@@ -1,9 +1,9 @@
 <a id="top"></a>
 <div align="center">
 
-# 🦈 Project 04 — Index
+# 🦈 Project 03 — Index
 ### Wireshark Packet Capture Case Studies
-**Project 04 of 5 — Tier-2 Support Portfolio**
+**Project 03 of 4 — Tier-2 Support Portfolio**
 
 ![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
