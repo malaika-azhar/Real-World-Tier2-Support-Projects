@@ -131,18 +131,18 @@ Tier-2 support gets tickets that say "the internet is slow" or "the site won't o
 ### 🗺️ Network Path
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart LR
-    PC["💻 WINDOWS PC<br/>192.168.100.38<br/>MAC 00:24:d7:28:69:f8"]:::pc --> GW["📡 HOME ROUTER<br/>192.168.100.1<br/>MAC 04:8c:16:67:f4:9a"]:::gw
-    GW --> DNS["🔎 DNS SERVERS<br/>192.0.2.1 and 192.0.2.2<br/>set by hand, answered from the router's MAC"]:::dns
-    GW --> NET["🌐 INTERNET<br/>e.g. 141.95.207.211 port 443<br/>the 1 GB download"]:::net
-    WS["🦈 WIRESHARK<br/>captures on the PC's Wi-Fi"]:::ws -.-> PC
-
-    classDef pc fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef gw fill:#1A5276,stroke:#0B2E43,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef dns fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef net fill:#B9770E,stroke:#6E4409,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef ws fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
-    linkStyle default stroke:#2C3E50,stroke-width:3px
+    PC["💻 Windows PC<br/>192.168.100.38"]:::pc --> GW["📡 Router<br/>192.168.100.1"]:::gw
+    GW --> DNS["🔎 DNS<br/>192.0.2.1 and .2"]:::dns
+    GW --> NET["🌐 Internet<br/>141.95.207.211:443"]:::net
+    WS["🦈 Wireshark"]:::ws -.-> PC
+    classDef pc fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef gw fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef dns fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef net fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef ws fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>Addresses come from Exhibits 3, 7, 11 and 16. The diagram shows the path, it is not a screenshot.</em></p>
 
@@ -296,19 +296,19 @@ Capture-relative times from Exhibit 6, all between the PC `192.168.100.38` and t
 ### 🗺️ What the Reply Decides
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart TB
-    Q["📤 PC SENDS A DNS QUERY<br/>A and AAAA for nonexistentdomain12345.com<br/>to 192.0.2.1"]:::start --> R{"❓ DID A REPLY COME BACK?"}:::q
-    R -->|NO| T["⏱️ NO REPLY AT ALL<br/>points to the resolver<br/>or the path to it"]:::unseen
-    R -->|YES| C{"❓ WHAT IS THE REPLY CODE?"}:::q
-    C -->|"0 NOERROR"| A["✅ NAME FOUND<br/>answer records come back"]:::unseen
-    C -->|"2 SERVFAIL"| S["⚠️ RESOLVER PROBLEM"]:::unseen
-    C -->|"3 NXDOMAIN"| N["🎯 NAME DOES NOT EXIST<br/>flags 0x8183, 0 answer records<br/>frames 2059, 2061, 2063 and 2065"]:::seen
-
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
-    linkStyle default stroke:#2C3E70,stroke-width:3px
+    Q["📤 DNS query<br/>nonexistentdomain12345.com"]:::start --> R{"Reply?"}:::q
+    R -->|no| T["⏱️ No reply<br/>resolver or path"]:::unseen
+    R -->|yes| C{"Reply code?"}:::q
+    C -->|0| A["✅ Found"]:::unseen
+    C -->|2| S["⚠️ SERVFAIL"]:::unseen
+    C -->|3| N["🎯 NXDOMAIN<br/>frames 2059 to 2065"]:::seen
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>Green is what the capture showed (Exhibits 6 and 7). Dashed boxes are other possible outcomes that did not happen here.</em></p>
 
@@ -400,20 +400,18 @@ tcp.analysis.retransmission
 ### 🗺️ What the Sender Does When Data Is Lost
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart TB
-    S["📦 SERVER SENDS DATA<br/>141.95.207.211 port 443 to 192.168.100.38 port 50829<br/>1412 bytes per segment"]:::start --> A{"❓ DOES THE ACK COME BACK IN TIME?"}:::q
-    A -->|YES| OK["➡️ NORMAL FLOW<br/>the next segment goes out"]:::unseen
-    A -->|"NO, THE SEGMENT WAS LOST"| D{"❓ HOW DOES THE SENDER NOTICE?"}:::q
-    D -->|"DUPLICATE ACKS"| F["🎯 TCP FAST RETRANSMISSION<br/>frame 470777, Len 1412<br/>flagged by Wireshark"]:::seen
-    D -->|"WAITS FOR A TIMEOUT"| R["🔁 PLAIN TCP RETRANSMISSION<br/>seen once, to 142.250.187.78<br/>frame 548,756"]:::seen
-    F --> E["📝 PROOF IN THE PACKET<br/>Retransmitted TCP segment data, 1412 bytes"]:::doc
-
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef doc fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
-    linkStyle default stroke:#2C3E70,stroke-width:3px
+    S["📦 Server sends data<br/>1412-byte segments"]:::start --> A{"ACK in time?"}:::q
+    A -->|yes| OK["➡️ Normal flow"]:::unseen
+    A -->|no| D{"How noticed?"}:::q
+    D -->|duplicate ACKs| F["🎯 Fast Retransmission<br/>frame 470777"]:::seen
+    D -->|timeout| R["🔁 Retransmission<br/>frame 548,756"]:::seen
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>Green is what Wireshark flagged (Exhibits 11 to 14). The diagram shows TCP's decision path. It cannot show where the loss happened, because the capture does not prove that.</em></p>
 
@@ -511,18 +509,18 @@ arp -a
 ### 🗺️ What Windows Does Before It Uses an Address
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart TB
-    W["🪟 WINDOWS APPLIES 192.168.100.38<br/>the same address the PC already had"]:::start --> P["📣 3 ARP PROBES<br/>Who has 192.168.100.38?<br/>frames 845472, 845481 and 845489"]:::seen
-    P --> Q{"❓ DID ANOTHER MAC ANSWER?"}:::q
-    Q -->|NO| A["🎯 ARP ANNOUNCEMENT<br/>frame 845495<br/>no conflict found"]:::seen
-    Q -->|YES| C["⚔️ REAL CONFLICT<br/>two MACs claim one IP"]:::unseen
-    A --> V["🔍 14 ARP REPLIES CHECKED<br/>all from 00:24:d7:28:69:f8<br/>no second MAC"]:::seen
-
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
-    linkStyle default stroke:#2C3E70,stroke-width:3px
+    W["🪟 Windows applies<br/>192.168.100.38"]:::start --> P["📣 3 ARP probes<br/>frames 845472 to 845489"]:::seen
+    P --> Q{"Another MAC<br/>answered?"}:::q
+    Q -->|no| A["🎯 ARP announcement<br/>frame 845495"]:::seen
+    Q -->|yes| C["⚔️ Real conflict"]:::unseen
+    A --> V["🔍 14 replies<br/>one MAC only"]:::seen
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>Green is what the capture showed (Exhibits 17 to 19). The dashed box is the real conflict, which did not happen because only one device was used.</em></p>
 
@@ -548,19 +546,19 @@ flowchart TB
 ### 🧾 What the Evidence Proves
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart LR
-    C1["🟢 CASE 1<br/>DNS"]:::c1 --> P1["✅ PROVEN<br/>reply code 3, NXDOMAIN"]:::ok
-    C2["🟠 CASE 2<br/>TCP"]:::c2 --> P2["✅ PROVEN<br/>segments were re-sent"]:::ok
-    C2 --> N2["❌ NOT PROVEN<br/>where the loss happened"]:::bad
-    C3["🟣 CASE 3<br/>ARP"]:::c3 --> P3["✅ PROVEN<br/>Windows probe and announcement"]:::ok
-    C3 --> N3["❌ NOT PROVEN<br/>a real two-MAC conflict"]:::bad
-
-    classDef c1 fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef c2 fill:#B9770E,stroke:#6E4409,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef c3 fill:#76448A,stroke:#432752,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef bad fill:#943126,stroke:#571C16,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    linkStyle default stroke:#2C3E50,stroke-width:3px
+    C1["🟢 Case 1<br/>DNS"]:::c1 --> P1["✅ Proven<br/>NXDOMAIN"]:::ok
+    C2["🟠 Case 2<br/>TCP"]:::c2 --> P2["✅ Proven<br/>segments re-sent"]:::ok
+    C2 --> N2["❌ Not proven<br/>where loss happened"]:::bad
+    C3["🟣 Case 3<br/>ARP"]:::c3 --> P3["✅ Proven<br/>probe + announcement"]:::ok
+    C3 --> N3["❌ Not proven<br/>a real two-MAC conflict"]:::bad
+    classDef c1 fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef c2 fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef c3 fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 
 ---
