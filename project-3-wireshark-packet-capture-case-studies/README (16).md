@@ -131,7 +131,7 @@ Tier-2 support gets tickets that say "the internet is slow" or "the site won't o
 ### 🗺️ Network Path
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     PC["💻 Windows PC<br/>192.168.100.38"]:::pc --> GW["📡 Router<br/>192.168.100.1"]:::gw
     GW --> DNS["🔎 DNS<br/>192.0.2.1 and .2"]:::dns
@@ -157,7 +157,7 @@ flowchart LR
   'sectionBkgColor':'#D6DBDF', 'altSectionBkgColor':'#EAECEE',
   'taskTextColor':'#FFFFFF', 'taskTextOutsideColor':'#1B2631',
   'taskTextLightColor':'#FFFFFF',
-  'titleColor':'#1B2A4A', 'fontSize':'16px'
+  'titleColor':'#1B2A4A', 'fontSize':'18px'
 }}}%%
 gantt
     title Project Flow — Capture Setup to Three Case Studies
@@ -296,7 +296,7 @@ Capture-relative times from Exhibit 6, all between the PC `192.168.100.38` and t
 ### 🗺️ What the Reply Decides
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     Q["📤 DNS query<br/>nonexistentdomain12345.com"]:::start --> R{"Reply?"}:::q
     R -->|no| T["⏱️ No reply<br/>resolver or path"]:::unseen
@@ -400,7 +400,7 @@ tcp.analysis.retransmission
 ### 🗺️ What the Sender Does When Data Is Lost
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     S["📦 Server sends data<br/>1412-byte segments"]:::start --> A{"ACK in time?"}:::q
     A -->|yes| OK["➡️ Normal flow"]:::unseen
@@ -509,7 +509,7 @@ arp -a
 ### 🗺️ What Windows Does Before It Uses an Address
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     W["🪟 Windows applies<br/>192.168.100.38"]:::start --> P["📣 3 ARP probes<br/>frames 845472 to 845489"]:::seen
     P --> Q{"Another MAC<br/>answered?"}:::q
@@ -546,7 +546,7 @@ flowchart TB
 ### 🧾 What the Evidence Proves
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     C1["🟢 Case 1<br/>DNS"]:::c1 --> P1["✅ Proven<br/>NXDOMAIN"]:::ok
     C2["🟠 Case 2<br/>TCP"]:::c2 --> P2["✅ Proven<br/>segments re-sent"]:::ok
