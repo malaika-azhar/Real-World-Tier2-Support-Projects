@@ -64,25 +64,24 @@ Email spoofing works when a domain does not tell the world which servers may sen
 ### 🌳 Audit Structure
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart TD
-    R[Email Authentication Audit]:::root --> D1[10 Domains: SPF + DMARC]:::d1
-    R --> D2[4 Inbox Emails: SPF, DKIM, DMARC results]:::d2
-
-    D1 --> C1[Banks and Global Companies]:::strong
-    D1 --> C2[Government]:::moderate
-    D1 --> C3[Telecom and Education]:::moderate
-    D1 --> C4[Small Businesses]:::weak
-
-    D2 --> H1[Skool, ISC2, LinkedIn]:::pass
-    D2 --> H2[Splunk - spam-filtered 📝]:::pass
-
-    classDef root fill:#1C1B19,stroke:#1C1B19,color:#fff
+    R["Email authentication audit"]:::root --> D1["10 domains<br/>SPF + DMARC"]:::d1
+    R --> D2["4 inbox emails<br/>SPF, DKIM, DMARC"]:::d2
+    D1 --> C1["Banks and global"]:::strong
+    D1 --> C2["Government"]:::moderate
+    D1 --> C3["Telecom and education"]:::moderate
+    D1 --> C4["Small businesses"]:::weak
+    D2 --> H1["Skool, ISC2, LinkedIn"]:::pass
+    D2 --> H2["Splunk (spam) 📝"]:::pass
+    classDef root fill:#1C1B19,stroke:#1C1B19,color:#FFFFFF
+    classDef d1 fill:#ECEAFA,stroke:#4A3FA6,color:#4A3FA6
+    classDef d2 fill:#E7F0F7,stroke:#1D5B8F,color:#1D5B8F
     classDef strong fill:#E4F3EE,stroke:#0F6E56,color:#0F6E56
     classDef moderate fill:#FBF0DC,stroke:#9C6B0B,color:#9C6B0B
     classDef weak fill:#FBEAE2,stroke:#C6501F,color:#C6501F
-    classDef d1 fill:#ECEAFA,stroke:#4A3FA6,color:#4A3FA6
-    classDef d2 fill:#E7F0F7,stroke:#1D5B8F,color:#1D5B8F
     classDef pass fill:#E4F3EE,stroke:#0F6E56,color:#0F6E56
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 
 <div align="center">
@@ -500,18 +499,40 @@ The time and the answering server come from the "Reported by" line on each DMARC
 | Moderate | `p=quarantine` with `~all` |
 | Weak | `p=none` |
 
+### 🗺️ What the DMARC Policy Decides
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+flowchart TB
+    M["📩 Mail claims to be<br/>from the domain"]:::start --> A{"SPF or DKIM passes<br/>and lines up?"}:::q
+    A -->|yes| Ok["✅ Delivered normally"]:::unseen
+    A -->|no| P{"DMARC p= says?"}:::q
+    P -->|none| N["🟥 Delivered, only reported<br/>2 of 10 domains"]:::bad
+    P -->|quarantine| Qn["🟨 Sent to spam<br/>3 of 10 domains"]:::warn
+    P -->|reject| R["🟩 Blocked<br/>5 of 10 domains"]:::seen
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    classDef warn fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
+```
+<p align="center"><em>Domain counts come from the Comparison Table (Exhibits 1 to 20). The diagram shows how DMARC decides, it is not a screenshot.</em></p>
+
 ### 🎯 Sector-Level Pattern
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart LR
-    A[Banks and Global Companies]:::strong -->|p=reject| S1[Strong to Very strong]
-    G[Government]:::moderate -->|p=reject, sp=none gap| S4[Strong, one gap]
-    B[Telecom and Education]:::moderate -->|p=quarantine| S2[Moderate to Moderate-strong]
-    C[Small Software Houses]:::weak -->|p=none, no reports| S3[Weak - symbolic only]
-
+    A["Banks and global"]:::strong -->|p=reject| S1["Strong to very strong"]:::strong
+    G["Government"]:::moderate -->|"reject, sp=none"| S4["Strong, one gap"]:::moderate
+    B["Telecom and education"]:::moderate -->|p=quarantine| S2["Moderate"]:::moderate
+    C["Small software houses"]:::weak -->|p=none| S3["Weak, symbolic only"]:::weak
     classDef strong fill:#E4F3EE,stroke:#0F6E56,color:#0F6E56
     classDef moderate fill:#FBF0DC,stroke:#9C6B0B,color:#9C6B0B
     classDef weak fill:#FBEAE2,stroke:#C6501F,color:#C6501F
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 
 **Finding:** In this sample, the organizations with the most to lose from spoofing publish the strongest policy. All four banks and global companies (PayPal, Microsoft, HBL, Meezan) use `p=reject`. Government also uses `p=reject`, with one gap (`sp=none`). The three telecom and education domains stop at `p=quarantine`. Both small businesses publish the same bare `p=none` with no reports. Inside one sector the spread can still be wide: Jazz and Telenor share a DMARC policy but differ on SPF and reporting. Only HBL and NADRA use strict alignment.
@@ -535,6 +556,25 @@ flowchart LR
 | Header results | 4 emails | All four show SPF, DKIM and DMARC PASS |
 | Failing mail | Not covered | No failing email in the sample |
 
+
+### 🧾 What the Evidence Proves
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+flowchart LR
+    S["🟦 SPF records"]:::c1 --> S1["✅ Proven<br/>10 of 10 read"]:::ok
+    D["🟪 DMARC records"]:::c3 --> D1["✅ Proven<br/>10 of 10 read"]:::ok
+    K["🟧 DKIM"]:::c2 --> K1["✅ Proven<br/>PASS in 4 headers"]:::ok
+    K --> K2["❌ Not proven<br/>per-domain selectors"]:::bad
+    H["📩 Headers"]:::c1 --> H1["❌ Not proven<br/>failing mail, link to Module 1"]:::bad
+    classDef c1 fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef c2 fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef c3 fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
+```
+
 ---
 
 <a id="audit-pipeline"></a>
@@ -543,37 +583,26 @@ flowchart LR
 How a domain name becomes a scored, comparable result
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart TB
-    Dom["🌐 PICK A DOMAIN"]:::domClass
-    Spf["📄 SPF LOOKUP"]:::spfClass
-    Dmarc["🛡️ _dmarc TXT LOOKUP"]:::dmarcClass
-    Pol["🔎 READ THE p= POLICY"]:::polClass
-    Rej["✅ p=reject"]:::rejClass
-    Qua["🟨 p=quarantine"]:::quaClass
-    Non["🟥 p=none"]:::nonClass
-    Gap["🔧 CHECK sp=, ALIGNMENT, rua= AND SPF ENDING"]:::gapClass
-    Ver["🎯 GIVE A VERDICT"]:::verClass
-
-    Dom --> Spf --> Dmarc --> Pol
-    Pol -->|reject| Rej
-    Pol -->|quarantine| Qua
-    Pol -->|none| Non
-    Rej --> Gap
+    Dom["🌐 Pick a domain"]:::dom --> Spf["📄 SPF lookup"]:::spf --> Dmarc["🛡️ _dmarc TXT lookup"]:::dmarc --> Pol{"p= policy?"}:::pol
+    Pol -->|reject| Rej["✅ reject"]:::rej
+    Pol -->|quarantine| Qua["🟨 quarantine"]:::qua
+    Pol -->|none| Non["🟥 none"]:::non
+    Rej --> Gap["🔧 Check sp=, alignment,<br/>rua= and SPF ending"]:::gap
     Qua --> Gap
     Non --> Gap
-    Gap --> Ver
-
-    classDef domClass fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef spfClass fill:#1A5276,stroke:#0B2E43,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef dmarcClass fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef polClass fill:#B9770E,stroke:#6E4409,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef rejClass fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef quaClass fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef nonClass fill:#943126,stroke:#571C16,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef gapClass fill:#76448A,stroke:#432752,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef verClass fill:#148F77,stroke:#0B5142,stroke-width:4px,color:#FFFFFF,font-weight:bold
-
-    linkStyle default stroke:#2C3E50,stroke-width:3px
+    Gap --> Ver["🎯 Give a verdict"]:::ver
+    classDef dom fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef spf fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef dmarc fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef pol fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef rej fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef qua fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef non fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    classDef gap fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef ver fill:#148F77,stroke:#0B5142,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 
 ---
@@ -660,6 +689,26 @@ The subject advertises `HRPostingPartner.com`, so this looks like a promotion fr
 In all four, the DKIM signing domain matches the domain in the From address.
 
 **Why no FAIL example appears:** All 4 emails passed, including the one in spam. This sample is only four legitimate senders, so it cannot show how Gmail treats mail that fails. It is a limit of the sample, not proof that failing mail never arrives.
+
+### 🗺️ What a Header Result Decides
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+flowchart TB
+    O["📨 Open Show original"]:::start --> R{"SPF, DKIM and DMARC<br/>all PASS?"}:::q
+    R -->|yes| Y["✅ All 4 emails<br/>skool, splunk, isc2, linkedin"]:::seen
+    R -->|no| F["❌ Compare the sending IP<br/>with the SPF record"]:::unseen
+    Y --> S{"Safe and wanted?"}:::q
+    S --> Sp["📁 Splunk went to spam 📝<br/>authentication is not spam filtering"]:::warn
+    S --> Li["📣 LinkedIn mail is a third-party promo<br/>a pass proves the route only"]:::warn
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    classDef warn fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
+```
+<p align="center"><em>Green is what the four headers showed (Exhibits 21 to 24). The dashed box is a FAIL, which did not appear in this sample.</em></p>
 
 ### 🔍 Analyst Note — How This Would Be Handled in Production
 
