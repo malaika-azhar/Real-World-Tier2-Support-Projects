@@ -128,6 +128,24 @@ Tier-2 support gets tickets that say "the internet is slow" or "the site won't o
 > [!IMPORTANT]
 > The DNS servers were typed in by hand (Exhibit 16). `192.0.2.0/24` is an address block reserved for documentation examples (RFC 5737). The DNS replies in Exhibit 7 came from the router's MAC address, so the router answered on those addresses. Case 1 depends on this resolver.
 
+### 🗺️ Network Path
+
+```mermaid
+flowchart LR
+    PC["💻 WINDOWS PC<br/>192.168.100.38<br/>MAC 00:24:d7:28:69:f8"]:::pc --> GW["📡 HOME ROUTER<br/>192.168.100.1<br/>MAC 04:8c:16:67:f4:9a"]:::gw
+    GW --> DNS["🔎 DNS SERVERS<br/>192.0.2.1 and 192.0.2.2<br/>set by hand, answered from the router's MAC"]:::dns
+    GW --> NET["🌐 INTERNET<br/>e.g. 141.95.207.211 port 443<br/>the 1 GB download"]:::net
+    WS["🦈 WIRESHARK<br/>captures on the PC's Wi-Fi"]:::ws -.-> PC
+
+    classDef pc fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef gw fill:#1A5276,stroke:#0B2E43,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef dns fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef net fill:#B9770E,stroke:#6E4409,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef ws fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E50,stroke-width:3px
+```
+<p align="center"><em>Addresses come from Exhibits 3, 7, 11 and 16. The diagram shows the path, it is not a screenshot.</em></p>
+
 ---
 
 <a id="project-flow"></a>
@@ -275,6 +293,25 @@ Capture-relative times from Exhibit 6, all between the PC `192.168.100.38` and t
 | Response time | 129.7 ms (frame 2059 answers frame 2058) |
 | Source MAC of the reply | `04:8c:16:67:f4:9a`, the same MAC as the gateway in Exhibit 19 |
 
+### 🗺️ What the Reply Decides
+
+```mermaid
+flowchart TB
+    Q["📤 PC SENDS A DNS QUERY<br/>A and AAAA for nonexistentdomain12345.com<br/>to 192.0.2.1"]:::start --> R{"❓ DID A REPLY COME BACK?"}:::q
+    R -->|NO| T["⏱️ NO REPLY AT ALL<br/>points to the resolver<br/>or the path to it"]:::unseen
+    R -->|YES| C{"❓ WHAT IS THE REPLY CODE?"}:::q
+    C -->|"0 NOERROR"| A["✅ NAME FOUND<br/>answer records come back"]:::unseen
+    C -->|"2 SERVFAIL"| S["⚠️ RESOLVER PROBLEM"]:::unseen
+    C -->|"3 NXDOMAIN"| N["🎯 NAME DOES NOT EXIST<br/>flags 0x8183, 0 answer records<br/>frames 2059, 2061, 2063 and 2065"]:::seen
+
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E70,stroke-width:3px
+```
+<p align="center"><em>Green is what the capture showed (Exhibits 6 and 7). Dashed boxes are other possible outcomes that did not happen here.</em></p>
+
 ### 🔍 Analyst Note — How This Would Be Handled in Production
 
 - **Step 1:** Check the spelling of the name. A typo is the most common reason for NXDOMAIN.
@@ -359,6 +396,26 @@ tcp.analysis.retransmission
 | Segment size | 1412 bytes of data per packet (1466 bytes on the wire) |
 | Frames seen in the screenshots | 412,038 up to 549,604 |
 | Marker | `Retransmitted TCP segment data (1412 bytes)` |
+
+### 🗺️ What the Sender Does When Data Is Lost
+
+```mermaid
+flowchart TB
+    S["📦 SERVER SENDS DATA<br/>141.95.207.211 port 443 to 192.168.100.38 port 50829<br/>1412 bytes per segment"]:::start --> A{"❓ DOES THE ACK COME BACK IN TIME?"}:::q
+    A -->|YES| OK["➡️ NORMAL FLOW<br/>the next segment goes out"]:::unseen
+    A -->|"NO, THE SEGMENT WAS LOST"| D{"❓ HOW DOES THE SENDER NOTICE?"}:::q
+    D -->|"DUPLICATE ACKS"| F["🎯 TCP FAST RETRANSMISSION<br/>frame 470777, Len 1412<br/>flagged by Wireshark"]:::seen
+    D -->|"WAITS FOR A TIMEOUT"| R["🔁 PLAIN TCP RETRANSMISSION<br/>seen once, to 142.250.187.78<br/>frame 548,756"]:::seen
+    F --> E["📝 PROOF IN THE PACKET<br/>Retransmitted TCP segment data, 1412 bytes"]:::doc
+
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef doc fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E70,stroke-width:3px
+```
+<p align="center"><em>Green is what Wireshark flagged (Exhibits 11 to 14). The diagram shows TCP's decision path. It cannot show where the loss happened, because the capture does not prove that.</em></p>
 
 ### 🔍 Analyst Note — How This Would Be Handled in Production
 
@@ -451,6 +508,24 @@ arp -a
 | Second MAC seen | None |
 | What a real conflict would show | Two different MAC addresses replying for the same IP |
 
+### 🗺️ What Windows Does Before It Uses an Address
+
+```mermaid
+flowchart TB
+    W["🪟 WINDOWS APPLIES 192.168.100.38<br/>the same address the PC already had"]:::start --> P["📣 3 ARP PROBES<br/>Who has 192.168.100.38?<br/>frames 845472, 845481 and 845489"]:::seen
+    P --> Q{"❓ DID ANOTHER MAC ANSWER?"}:::q
+    Q -->|NO| A["🎯 ARP ANNOUNCEMENT<br/>frame 845495<br/>no conflict found"]:::seen
+    Q -->|YES| C["⚔️ REAL CONFLICT<br/>two MACs claim one IP"]:::unseen
+    A --> V["🔍 14 ARP REPLIES CHECKED<br/>all from 00:24:d7:28:69:f8<br/>no second MAC"]:::seen
+
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E70,stroke-width:3px
+```
+<p align="center"><em>Green is what the capture showed (Exhibits 17 to 19). The dashed box is the real conflict, which did not happen because only one device was used.</em></p>
+
 ### 🔍 Analyst Note — How This Would Be Handled in Production
 
 - **Step 1:** Run the reply filter and look for two different MAC addresses answering for one IP.
@@ -468,6 +543,25 @@ arp -a
 | TCP | Tested | Fast Retransmission flagged on one 1 GB download stream |
 | ARP | Partly tested | Probe and Announcement seen; no second device, so no real conflict |
 | Capture-wide statistics | Overview only | Protocol Hierarchy is complete; Conversations and I/O Graph were captured while still loading |
+
+
+### 🧾 What the Evidence Proves
+
+```mermaid
+flowchart LR
+    C1["🟢 CASE 1<br/>DNS"]:::c1 --> P1["✅ PROVEN<br/>reply code 3, NXDOMAIN"]:::ok
+    C2["🟠 CASE 2<br/>TCP"]:::c2 --> P2["✅ PROVEN<br/>segments were re-sent"]:::ok
+    C2 --> N2["❌ NOT PROVEN<br/>where the loss happened"]:::bad
+    C3["🟣 CASE 3<br/>ARP"]:::c3 --> P3["✅ PROVEN<br/>Windows probe and announcement"]:::ok
+    C3 --> N3["❌ NOT PROVEN<br/>a real two-MAC conflict"]:::bad
+
+    classDef c1 fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef c2 fill:#B9770E,stroke:#6E4409,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef c3 fill:#76448A,stroke:#432752,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    linkStyle default stroke:#2C3E50,stroke-width:3px
+```
 
 ---
 
