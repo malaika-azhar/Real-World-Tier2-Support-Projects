@@ -141,22 +141,16 @@ Tier-2 support is not only about fixing things for one user. It also means readi
 ## ⏱️ Project Flow
 
 ```mermaid
-%%{init: {'flowchart': {'nodeSpacing': 25, 'rankSpacing': 35, 'htmlLabels': true}, 'themeVariables': {'fontSize': '13px'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
-    S1["🔵 SETUP<br/>issue, fork, clone"]:::setup --> S2["🟢 LOCAL RUN<br/>app on :3000 / :3001"]:::run
-    S2 --> S3["🟠 REPRODUCE<br/>test group, 3 monitors"]:::repro
-    S3 --> S4["🟣 INVESTIGATE<br/>find onDrop"]:::inv
-    S4 --> S5["🔴 FIX<br/>1 file, +14 / -7"]:::fix
-    S5 --> S6["📬 SUBMIT<br/>PR 7882 open"]:::sub
-    S6 --> S7["⏳ REVIEW<br/>pending"]:::wait
-
-    classDef setup fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef run fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef repro fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef inv fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef fix fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef sub fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef wait fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF,font-weight:bold
+    S1["🔵 Setup"]:::setup --> S2["🟢 Local run"]:::run --> S3["🟠 Reproduce"]:::repro --> S4["🟣 Investigate"]:::inv --> S5["🔴 Fix"]:::fix --> S6["📬 Submit"]:::sub --> S7["⏳ Review"]:::wait
+    classDef setup fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef run fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef repro fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef inv fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef fix fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    classDef sub fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef wait fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
     linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>Colors distinguish each project stage. The screenshots show only one date, the fix commit on Sep 19, 2026 (Exhibit 17), so no clock times are drawn. Review is still pending.</em></p>
@@ -405,18 +399,17 @@ async onDrop(event) {
 Every monitor stores a `parent` field: the ID of the group it belongs to, or `null` if it is top-level. Dropping a monitor on a group set that field correctly. But `onDrop` returned at once whenever the target was not a group, so a drop on a normal monitor, or outside a group, did nothing. No code path ever set `parent` back to `null`.
 
 ```mermaid
-%%{init: {'flowchart': {'nodeSpacing': 25, 'rankSpacing': 30, 'htmlLabels': true}, 'themeVariables': {'fontSize': '13px'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
-    D["🖱️ MONITOR DROPPED ON A TARGET<br/>onDrop runs"]:::start --> Q{"❓ TARGET IS<br/>A GROUP?"}:::q
-    Q -->|YES| Y["✅ parent = group ID<br/>monitor nests inside"]:::ok
-    Q -->|NO| N["❌ early return<br/>nothing happens"]:::bad
-    N -.-> X["No code path ever sets<br/>parent back to null"]:::note
-
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef note fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    D["🖱️ Drop on a target<br/>onDrop runs"]:::start --> Q{"Target is a group?"}:::q
+    Q -->|yes| Y["✅ parent = group ID"]:::ok
+    Q -->|no| N["❌ early return<br/>nothing happens"]:::bad
+    N -.-> X["parent never set<br/>back to null"]:::note
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    classDef note fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
     linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>Before the fix. Only the "group" branch ever changed the parent. This diagram shows the logic, it is not a screenshot.</em></p>
@@ -442,7 +435,7 @@ flowchart TB
 <a id="fix"></a>
 ## 🔴 Fix — Writing the Change
 
-**Objective:** Make the smallest change that fixes the reported behavior, and be able to explain every line of it.
+**Objective:** Make the smallest change that fixes the reported behavior, and be able to explain every line.
 
 ### Step 19 — Write the fix ✅
 
@@ -459,19 +452,18 @@ const newParent = this.monitor.type === "group" ? this.monitor.id : null;
 - **Everything else** in the method, meaning the optimistic UI update, the socket call that saves the change and the rollback on error, was left untouched.
 
 ```mermaid
-%%{init: {'flowchart': {'nodeSpacing': 25, 'rankSpacing': 30, 'htmlLabels': true}, 'themeVariables': {'fontSize': '13px'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
-    D["🖱️ MONITOR DROPPED ON A TARGET<br/>onDrop runs"]:::start --> Q{"❓ TARGET IS<br/>A GROUP?"}:::q
-    Q -->|YES| Y["✅ newParent = group ID<br/>nests inside, as before"]:::ok
-    Q -->|NO| N["🆕 newParent = null<br/>moves to the top level"]:::new
-    Y --> R["💾 UI update, socket save, rollback on error<br/>left untouched"]:::same
+    D["🖱️ Drop on a target<br/>onDrop runs"]:::start --> Q{"Target is a group?"}:::q
+    Q -->|yes| Y["✅ newParent = group ID"]:::ok
+    Q -->|no| N["🆕 newParent = null<br/>moves to top level"]:::new
+    Y --> R["💾 UI update, save,<br/>rollback (unchanged)"]:::same
     N --> R
-
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef new fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef same fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef new fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef same fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
     linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>After the fix. Both branches end in a valid parent value and the rest of the method is unchanged. This diagram shows the logic, it is not a screenshot.</em></p>
@@ -581,44 +573,31 @@ The first two attempts (#7880 and #7881) were closed by a repository bot because
 How a reported bug becomes a submitted, checked, reviewed pull request
 
 ```mermaid
-%%{init: {'flowchart': {'nodeSpacing': 20, 'rankSpacing': 28, 'htmlLabels': true}, 'themeVariables': {'fontSize': '12px'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
-    Iss["🐛 REPORTED ISSUE 7062"]:::issClass
-    Claim["🙋 CLAIM IT IN A COMMENT"]:::claimClass
-    Fork["🍴 FORK AND CLONE"]:::forkClass
-    Run["⚙️ RUN LOCALLY"]:::runClass
-    Find["🔍 FIND THE FAULT IN onDrop"]:::findClass
-    Fix["🛠️ FIX MonitorListItem.vue"]:::fixClass
-    Open["📬 OPEN A PULL REQUEST"]:::openClass
-    Tmpl["❓ DESCRIPTION MATCHES THE TEMPLATE?"]:::tmplClass
-    Bot["🤖 BOT CLOSES THE PR<br/>PR 7880 and PR 7881"]:::botClass
-    Redo["✍️ REWRITE THE DESCRIPTION<br/>incl. AI disclosure"]:::redoClass
-    Live["✅ PR 7882 OPEN<br/>18 checks pass, 1 neutral"]:::liveClass
-    Rev["⏳ AWAITING FORMAL REVIEW"]:::revClass
-    Merge["🔀 MERGE (PENDING)"]:::mergeClass
-
-    Iss --> Claim --> Fork --> Run --> Find --> Fix --> Open --> Tmpl
-    Tmpl -->|NO| Bot
-    Bot --> Redo
+    Iss["🐛 Issue 7062<br/>claimed in a comment"]:::start --> Fork["🍴 Fork and clone"]:::claim
+    Fork --> Run["⚙️ Run locally"]:::run
+    Run --> Find["🔍 Find fault in onDrop"]:::inv
+    Find --> Fix["🛠️ Fix MonitorListItem.vue"]:::fix
+    Fix --> Open["📬 Open pull request"]:::claim
+    Open --> Tmpl{"Matches<br/>template?"}:::q
+    Tmpl -->|no| Bot["🤖 Bot closes PR<br/>7880, 7881"]:::bad
+    Bot --> Redo["✍️ Rewrite description<br/>incl. AI disclosure"]:::redo
     Redo --> Open
-    Tmpl -->|YES| Live
-    Live --> Rev
-    Rev -.-> Merge
-
-    classDef issClass fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef claimClass fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef forkClass fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef runClass fill:#148F77,stroke:#0B5142,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef findClass fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef fixClass fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef openClass fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef tmplClass fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef botClass fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef redoClass fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef liveClass fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef revClass fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF,font-weight:bold
-    classDef mergeClass fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
-
+    Tmpl -->|yes| Live["✅ PR 7882 open<br/>18 checks pass"]:::ok
+    Live --> Rev["⏳ Awaiting review"]:::wait
+    Rev -.-> Merge["🔀 Merge (pending)"]:::note
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef claim fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef run fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef inv fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef fix fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    classDef redo fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef wait fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef note fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
     linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 <p align="center"><em>The template loop ran twice in real life, from my notes 📝. The last box is dashed because the merge has not happened.</em></p>
