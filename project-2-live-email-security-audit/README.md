@@ -64,7 +64,7 @@ Email spoofing works when a domain does not tell the world which servers may sen
 ### 🌳 Audit Structure
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TD
     R["Email authentication audit"]:::root --> D1["10 domains<br/>SPF + DMARC"]:::d1
     R --> D2["4 inbox emails<br/>SPF, DKIM, DMARC"]:::d2
@@ -502,7 +502,7 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 🗺️ What the DMARC Policy Decides
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     M["📩 Mail claims to be<br/>from the domain"]:::start --> A{"SPF or DKIM passes<br/>and lines up?"}:::q
     A -->|yes| Ok["✅ Delivered normally"]:::unseen
@@ -523,7 +523,7 @@ flowchart TB
 ### 🎯 Sector-Level Pattern
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     A["Banks and global"]:::strong -->|p=reject| S1["Strong to very strong"]:::strong
     G["Government"]:::moderate -->|"reject, sp=none"| S4["Strong, one gap"]:::moderate
@@ -560,7 +560,7 @@ flowchart LR
 ### 🧾 What the Evidence Proves
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     S["🟦 SPF records"]:::c1 --> S1["✅ Proven<br/>10 of 10 read"]:::ok
     D["🟪 DMARC records"]:::c3 --> D1["✅ Proven<br/>10 of 10 read"]:::ok
@@ -583,7 +583,7 @@ flowchart LR
 How a domain name becomes a scored, comparable result
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     Dom["🌐 Pick a domain"]:::dom --> Spf["📄 SPF lookup"]:::spf --> Dmarc["🛡️ _dmarc TXT lookup"]:::dmarc --> Pol{"p= policy?"}:::pol
     Pol -->|reject| Rej["✅ reject"]:::rej
@@ -693,7 +693,7 @@ In all four, the DKIM signing domain matches the domain in the From address.
 ### 🗺️ What a Header Result Decides
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     O["📨 Open Show original"]:::start --> R{"SPF, DKIM and DMARC<br/>all PASS?"}:::q
     R -->|yes| Y["✅ All 4 emails<br/>skool, splunk, isc2, linkedin"]:::seen
