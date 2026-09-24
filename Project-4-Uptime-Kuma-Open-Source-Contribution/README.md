@@ -141,17 +141,22 @@ Tier-2 support is not only about fixing things for one user. It also means readi
 ## ⏱️ Project Flow
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
-    S1["🔵 Setup"]:::setup --> S2["🟢 Local run"]:::run --> S3["🟠 Reproduce"]:::repro --> S4["🟣 Investigate"]:::inv --> S5["🔴 Fix"]:::fix --> S6["📬 Submit"]:::sub --> S7["⏳ Review"]:::wait
-    classDef setup fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
-    classDef run fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
-    classDef repro fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
-    classDef inv fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
-    classDef fix fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
-    classDef sub fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
-    classDef wait fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
-    linkStyle default stroke:#2C3E50,stroke-width:2px
+    S1["🔵 SETUP<br/>issue, fork, clone"]:::setup --> S2["🟢 LOCAL RUN<br/>app on :3000 / :3001"]:::run
+    S2 --> S3["🟠 REPRODUCE<br/>test group, 3 monitors"]:::repro
+    S3 --> S4["🟣 INVESTIGATE<br/>find onDrop"]:::inv
+    S4 --> S5["🔴 FIX<br/>1 file, +14 / -7"]:::fix
+    S5 --> S6["📬 SUBMIT<br/>PR 7882 open"]:::sub
+    S6 --> S7["⏳ REVIEW<br/>pending"]:::wait
+
+    classDef setup fill:#1A5276,stroke:#0B2E43,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    classDef run fill:#117864,stroke:#083D33,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    classDef repro fill:#B9770E,stroke:#6E4409,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    classDef inv fill:#76448A,stroke:#432752,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    classDef fix fill:#943126,stroke:#571C16,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    classDef sub fill:#1E8449,stroke:#0E4A28,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    classDef wait fill:#B7950B,stroke:#6B5807,stroke-width:3px,color:#FFFFFF,font-weight:bold
+    linkStyle default stroke:#2C3E50,stroke-width:3px
 ```
 <p align="center"><em>Colors distinguish each project stage. The screenshots show only one date, the fix commit on Sep 19, 2026 (Exhibit 17), so no clock times are drawn. Review is still pending.</em></p>
 
@@ -165,21 +170,21 @@ flowchart LR
 ### Step 1 — Open the issue ✅
 
 <p align="center">
-  <img src="screenshots/01_issue_page_opened.PNG" alt="Exhibit 1 - Issue page" width="850"><br>
+  <img src="Screenshots/01_issue_page_opened.PNG" alt="Exhibit 1 - Issue page" width="850"><br>
   <em>Exhibit 1 — Issue #7062, "Allow a monitor to be dragged on top of the hierarchy", labeled <code>help wanted</code> and <code>feature-request</code></em>
 </p>
 
 ### Step 2 — Ask to be assigned ✅
 
 <p align="center">
-  <img src="screenshots/02_comment_posted.PNG" alt="Exhibit 2 - Assignment request" width="850"><br>
+  <img src="Screenshots/02_comment_posted.PNG" alt="Exhibit 2 - Assignment request" width="850"><br>
   <em>Exhibit 2 — Comment posted: "I'd like to work on this, can I be assigned?" The Assignees box still reads "No one assigned"</em>
 </p>
 
 ### Step 3 — Fork the repository ✅
 
 <p align="center">
-  <img src="screenshots/03_forked_repo.PNG" alt="Exhibit 3 - Forked repo" width="850"><br>
+  <img src="Screenshots/03_forked_repo.PNG" alt="Exhibit 3 - Forked repo" width="850"><br>
   <em>Exhibit 3 — Repository forked to <code>malaika-azhar/uptime-kuma</code>, up to date with upstream</em>
 </p>
 
@@ -191,14 +196,14 @@ cd uptime-kuma
 ```
 
 <p align="center">
-  <img src="screenshots/04_git_clone_terminal.PNG" alt="Exhibit 4 - git clone" width="850"><br>
+  <img src="Screenshots/04_git_clone_terminal.PNG" alt="Exhibit 4 - git clone" width="850"><br>
   <em>Exhibit 4 — <code>git clone</code> and <code>cd uptime-kuma</code> completed in Git Bash, 43,739 objects received</em>
 </p>
 
 ### Step 5 — Read the contribution guide ✅
 
 <p align="center">
-  <img src="screenshots/05_contributing_md_read.PNG" alt="Exhibit 5 - CONTRIBUTING.md" width="850"><br>
+  <img src="Screenshots/05_contributing_md_read.PNG" alt="Exhibit 5 - CONTRIBUTING.md" width="850"><br>
   <em>Exhibit 5 — <code>CONTRIBUTING.md</code> reviewed before making any change, starting with the project info and directory structure</em>
 </p>
 
@@ -243,7 +248,7 @@ npm run setup
 ```
 
 <p align="center">
-  <img src="screenshots/06_node_version_and_setup.PNG" alt="Exhibit 6 - Setup attempt" width="850"><br>
+  <img src="Screenshots/06_node_version_and_setup.PNG" alt="Exhibit 6 - Setup attempt" width="850"><br>
   <em>Exhibit 6 — First <code>npm run setup</code> attempt failed on a version pathspec; local Node version (v24.14.1) confirmed instead</em>
 </p>
 
@@ -254,14 +259,14 @@ npm ci --omit dev
 ```
 
 <p align="center">
-  <img src="screenshots/07_npm_setup_complete.PNG" alt="Exhibit 7 - npm ci output" width="850"><br>
+  <img src="Screenshots/07_npm_setup_complete.PNG" alt="Exhibit 7 - npm ci output" width="850"><br>
   <em>Exhibit 7 — 597 packages installed with <code>EBADENGINE</code> warnings, but the pre-built <code>dist</code> bundle was not available for a dev checkout</em>
 </p>
 
 ### Step 8 — Dev server fails ✅
 
 <p align="center">
-  <img src="screenshots/08_dev_server_running.PNG" alt="Exhibit 8 - concurrently missing" width="850"><br>
+  <img src="Screenshots/08_dev_server_running.PNG" alt="Exhibit 8 - concurrently missing" width="850"><br>
   <em>Exhibit 8 — <code>npm run dev</code> failed: <code>'concurrently' is not recognized</code>, because dev dependencies had been skipped</em>
 </p>
 
@@ -272,7 +277,7 @@ npm install
 ```
 
 <p align="center">
-  <img src="screenshots/09_npm_install_and_dev_server.PNG" alt="Exhibit 9 - full npm install" width="850"><br>
+  <img src="Screenshots/09_npm_install_and_dev_server.PNG" alt="Exhibit 9 - full npm install" width="850"><br>
   <em>Exhibit 9 — Full <code>npm install</code> without <code>--omit dev</code>, 633 packages added</em>
 </p>
 
@@ -283,14 +288,14 @@ npm run dev
 ```
 
 <p align="center">
-  <img src="screenshots/10_npm_install_output.PNG" alt="Exhibit 10 - Vite dev server" width="850"><br>
+  <img src="Screenshots/10_npm_install_output.PNG" alt="Exhibit 10 - Vite dev server" width="850"><br>
   <em>Exhibit 10 — <code>npm run dev</code> succeeded: Vite frontend on <code>localhost:3000</code>, backend listening on <code>localhost:3001</code></em>
 </p>
 
 ### Step 11 — Reach the dashboard ✅
 
 <p align="center">
-  <img src="screenshots/11_local_run_success.PNG" alt="Exhibit 11 - Dashboard live" width="850"><br>
+  <img src="Screenshots/11_local_run_success.PNG" alt="Exhibit 11 - Dashboard live" width="850"><br>
   <em>Exhibit 11 — First-time setup completed. The live Uptime Kuma dashboard, empty and ready</em>
 </p>
 
@@ -320,28 +325,28 @@ npm run dev
 ### Step 12 — Create test monitors ✅
 
 <p align="center">
-  <img src="screenshots/12_three_monitors_created.PNG" alt="Exhibit 12 - Test monitors" width="850"><br>
+  <img src="Screenshots/12_three_monitors_created.PNG" alt="Exhibit 12 - Test monitors" width="850"><br>
   <em>Exhibit 12 — Three test monitors created (Cloudflare, GitHub, Google), all Up, to have something to group and drag</em>
 </p>
 
 ### Step 13 — Create a group ✅
 
 <p align="center">
-  <img src="screenshots/13_group_monitor_created.PNG" alt="Exhibit 13 - Group monitor" width="850"><br>
+  <img src="Screenshots/13_group_monitor_created.PNG" alt="Exhibit 13 - Group monitor" width="850"><br>
   <em>Exhibit 13 — A Group-type monitor, <code>Test Group</code>, created to hold the other monitors</em>
 </p>
 
 ### Step 14 — Confirm the nesting ✅
 
 <p align="center">
-  <img src="screenshots/14_monitors_auto_nested_in_group.PNG" alt="Exhibit 14 - Nested monitors" width="850"><br>
+  <img src="Screenshots/14_monitors_auto_nested_in_group.PNG" alt="Exhibit 14 - Nested monitors" width="850"><br>
   <em>Exhibit 14 — All three monitors nested under <code>Test Group</code>, confirmed by the "Monitor Group" field on the edit page</em>
 </p>
 
 ### Step 15 — Watch the event history ✅
 
 <p align="center">
-  <img src="screenshots/15_dashboard_overview_events.PNG" alt="Exhibit 15 - Dashboard events" width="850"><br>
+  <img src="Screenshots/15_dashboard_overview_events.PNG" alt="Exhibit 15 - Dashboard events" width="850"><br>
   <em>Exhibit 15 — Dashboard overview showing the group's live event history while testing continued</em>
 </p>
 
@@ -374,7 +379,7 @@ Manual drag-and-drop testing in the browser proved unreliable to show cleanly. T
 ### Step 17 — Read `MonitorList.vue` ✅
 
 <p align="center">
-  <img src="screenshots/16_monitorlist_vue_source_code.PNG" alt="Exhibit 16 - MonitorList.vue" width="850"><br>
+  <img src="Screenshots/16_monitorlist_vue_source_code.PNG" alt="Exhibit 16 - MonitorList.vue" width="850"><br>
   <em>Exhibit 16 — <code>src/components/MonitorList.vue</code> reviewed first. It renders the top-level list but does not contain the drag logic</em>
 </p>
 
@@ -399,18 +404,18 @@ async onDrop(event) {
 Every monitor stores a `parent` field: the ID of the group it belongs to, or `null` if it is top-level. Dropping a monitor on a group set that field correctly. But `onDrop` returned at once whenever the target was not a group, so a drop on a normal monitor, or outside a group, did nothing. No code path ever set `parent` back to `null`.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
-    D["🖱️ Drop on a target<br/>onDrop runs"]:::start --> Q{"Target is a group?"}:::q
-    Q -->|yes| Y["✅ parent = group ID"]:::ok
-    Q -->|no| N["❌ early return<br/>nothing happens"]:::bad
-    N -.-> X["parent never set<br/>back to null"]:::note
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
-    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
-    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
-    classDef note fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
-    linkStyle default stroke:#2C3E50,stroke-width:2px
+    D["🖱️ MONITOR DROPPED ON A TARGET<br/>onDrop runs"]:::start --> Q{"❓ TARGET IS<br/>A GROUP?"}:::q
+    Q -->|YES| Y["✅ parent = group ID<br/>monitor nests inside"]:::ok
+    Q -->|NO| N["❌ early return<br/>nothing happens"]:::bad
+    N -.-> X["No code path ever sets<br/>parent back to null"]:::note
+
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef note fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E50,stroke-width:3px
 ```
 <p align="center"><em>Before the fix. Only the "group" branch ever changed the parent. This diagram shows the logic, it is not a screenshot.</em></p>
 
@@ -452,24 +457,24 @@ const newParent = this.monitor.type === "group" ? this.monitor.id : null;
 - **Everything else** in the method, meaning the optimistic UI update, the socket call that saves the change and the rollback on error, was left untouched.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
-    D["🖱️ Drop on a target<br/>onDrop runs"]:::start --> Q{"Target is a group?"}:::q
-    Q -->|yes| Y["✅ newParent = group ID"]:::ok
-    Q -->|no| N["🆕 newParent = null<br/>moves to top level"]:::new
-    Y --> R["💾 UI update, save,<br/>rollback (unchanged)"]:::same
+    D["🖱️ MONITOR DROPPED ON A TARGET<br/>onDrop runs"]:::start --> Q{"❓ TARGET IS<br/>A GROUP?"}:::q
+    Q -->|YES| Y["✅ newParent = group ID<br/>nests inside, as before"]:::ok
+    Q -->|NO| N["🆕 newParent = null<br/>moves to the top level"]:::new
+    Y --> R["💾 UI update, socket save, rollback on error<br/>left untouched"]:::same
     N --> R
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
-    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
-    classDef new fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
-    classDef same fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
-    linkStyle default stroke:#2C3E50,stroke-width:2px
+
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef new fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef same fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E50,stroke-width:3px
 ```
 <p align="center"><em>After the fix. Both branches end in a valid parent value and the rest of the method is unchanged. This diagram shows the logic, it is not a screenshot.</em></p>
 
 <p align="center">
-  <img src="screenshots/17_git_diff_pr_comparison.PNG" alt="Exhibit 17 - Git diff" width="850"><br>
+  <img src="Screenshots/17_git_diff_pr_comparison.PNG" alt="Exhibit 17 - Git diff" width="850"><br>
   <em>Exhibit 17 — The compare view: 1 commit, 1 file, 14 additions and 7 deletions in <code>src/components/MonitorListItem.vue</code>. The commit <code>fix-monitor-unparent</code> (<code>28edc9c</code>) is dated Sep 19, 2026. The added lines include a new doc comment above the method</em>
 </p>
 
@@ -510,21 +515,21 @@ flowchart TB
 The first two attempts (#7880 and #7881) were closed by a repository bot because their descriptions did not match the required template. The closed pull requests had no "Reopen" option, so a fresh one (#7882) was opened from the same branch. The description was rewritten to follow the template, with an **AI Disclosure** section saying where AI assistance was used (investigating the code and drafting the fix) and that the change was reviewed and understood before it was sent. No screenshot shows the two closed pull requests, and the AI Disclosure section is not visible in the screenshots 📝.
 
 <p align="center">
-  <img src="screenshots/18_pr_opened_successfully.PNG" alt="Exhibit 18 - PR opened" width="850"><br>
+  <img src="Screenshots/18_pr_opened_successfully.PNG" alt="Exhibit 18 - PR opened" width="850"><br>
   <em>Exhibit 18 — PR #7882, "Fix: Allow monitor to be dragged out of a group hierarchy", status Open, 1 commit into <code>louislam:master</code> from <code>malaika-azhar:patch-1</code>. The summary says "Fixed <code>onDrop</code> in <code>MonitorListItem.vue</code>" and it resolves #7062</em>
 </p>
 
 ### Step 21 — Check the automated checks ✅
 
 <p align="center">
-  <img src="screenshots/19_checks_passed_maintainer_interaction.PNG" alt="Exhibit 19 - Checks passed" width="850"><br>
+  <img src="Screenshots/19_checks_passed_maintainer_interaction.PNG" alt="Exhibit 19 - Checks passed" width="850"><br>
   <em>Exhibit 19 — "All checks have passed": 1 neutral, 18 successful. A bot comment offers a test command, and the maintainer <code>CommanderStorm</code> changed the title to the lowercase form <code>fix: Allow monitor to be dragged out of a group hierarchy</code></em>
 </p>
 
 ### Step 22 — Record the current status ✅
 
 <p align="center">
-  <img src="screenshots/20_final_status_awaiting_review.PNG" alt="Exhibit 20 - Awaiting review" width="850"><br>
+  <img src="Screenshots/20_final_status_awaiting_review.PNG" alt="Exhibit 20 - Awaiting review" width="850"><br>
   <em>Exhibit 20 — Status at the time of writing: Open, all checks passed, "Changes can be cleanly merged". The same box also says "This branch is out-of-date with the base branch" and offers an "Update branch" button</em>
 </p>
 
@@ -573,32 +578,44 @@ The first two attempts (#7880 and #7881) were closed by a repository bot because
 How a reported bug becomes a submitted, checked, reviewed pull request
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
-    Iss["🐛 Issue 7062<br/>claimed in a comment"]:::start --> Fork["🍴 Fork and clone"]:::claim
-    Fork --> Run["⚙️ Run locally"]:::run
-    Run --> Find["🔍 Find fault in onDrop"]:::inv
-    Find --> Fix["🛠️ Fix MonitorListItem.vue"]:::fix
-    Fix --> Open["📬 Open pull request"]:::claim
-    Open --> Tmpl{"Matches<br/>template?"}:::q
-    Tmpl -->|no| Bot["🤖 Bot closes PR<br/>7880, 7881"]:::bad
-    Bot --> Redo["✍️ Rewrite description<br/>incl. AI disclosure"]:::redo
+    Iss["🐛 REPORTED ISSUE 7062"]:::issClass
+    Claim["🙋 CLAIM IT IN A COMMENT"]:::claimClass
+    Fork["🍴 FORK AND CLONE"]:::forkClass
+    Run["⚙️ RUN LOCALLY"]:::runClass
+    Find["🔍 FIND THE FAULT IN onDrop"]:::findClass
+    Fix["🛠️ FIX MonitorListItem.vue"]:::fixClass
+    Open["📬 OPEN A PULL REQUEST"]:::openClass
+    Tmpl["❓ DESCRIPTION MATCHES THE TEMPLATE?"]:::tmplClass
+    Bot["🤖 BOT CLOSES THE PR<br/>PR 7880 and PR 7881"]:::botClass
+    Redo["✍️ REWRITE THE DESCRIPTION<br/>incl. AI disclosure"]:::redoClass
+    Live["✅ PR 7882 OPEN<br/>18 checks pass, 1 neutral"]:::liveClass
+    Rev["⏳ AWAITING FORMAL REVIEW"]:::revClass
+    Merge["🔀 MERGE (PENDING)"]:::mergeClass
+
+    Iss --> Claim --> Fork --> Run --> Find --> Fix --> Open --> Tmpl
+    Tmpl -->|NO| Bot
+    Bot --> Redo
     Redo --> Open
-    Tmpl -->|yes| Live["✅ PR 7882 open<br/>18 checks pass"]:::ok
-    Live --> Rev["⏳ Awaiting review"]:::wait
-    Rev -.-> Merge["🔀 Merge (pending)"]:::note
-    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
-    classDef claim fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
-    classDef run fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
-    classDef inv fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
-    classDef fix fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
-    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
-    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
-    classDef redo fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
-    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
-    classDef wait fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
-    classDef note fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
-    linkStyle default stroke:#2C3E50,stroke-width:2px
+    Tmpl -->|YES| Live
+    Live --> Rev
+    Rev -.-> Merge
+
+    classDef issClass fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef claimClass fill:#1A5276,stroke:#0B2E43,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef forkClass fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef runClass fill:#148F77,stroke:#0B5142,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef findClass fill:#76448A,stroke:#432752,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef fixClass fill:#B9770E,stroke:#6E4409,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef openClass fill:#1A5276,stroke:#0B2E43,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef tmplClass fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef botClass fill:#943126,stroke:#571C16,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef redoClass fill:#76448A,stroke:#432752,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef liveClass fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef revClass fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef mergeClass fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+
+    linkStyle default stroke:#2C3E50,stroke-width:3px
 ```
 <p align="center"><em>The template loop ran twice in real life, from my notes 📝. The last box is dashed because the merge has not happened.</em></p>
 
@@ -729,7 +746,7 @@ These gaps are marked in the project instead of being hidden, so the results sho
 uptime-kuma-contribution-project/
 |-- README.md
 |-- INDEX.md
-`-- screenshots/
+`-- Screenshots/
     |-- 01_issue_page_opened.PNG
     |-- 02_comment_posted.PNG
     |-- 03_forked_repo.PNG

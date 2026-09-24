@@ -66,13 +66,13 @@ Exhibits 1 to 3. Click a screenshot to open it full size.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex1"></a>
-<a href="screenshots/ss-01-wireshark-interface-select.PNG"><img src="screenshots/ss-01-wireshark-interface-select.PNG" width="380" alt="Exhibit 1"></a>
+<a href="Screenshots/ss-01-wireshark-interface-select.PNG"><img src="Screenshots/ss-01-wireshark-interface-select.PNG" width="380" alt="Exhibit 1"></a>
 <br><b>Exhibit 1 — Wi-Fi interface selected</b>
 <br><sub>Wireshark 4.6.8 start screen with <code>Wi-Fi</code> highlighted</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex2"></a>
-<a href="screenshots/ss-02-capture-start.PNG"><img src="screenshots/ss-02-capture-start.PNG" width="380" alt="Exhibit 2"></a>
+<a href="Screenshots/ss-02-capture-start.PNG"><img src="Screenshots/ss-02-capture-start.PNG" width="380" alt="Exhibit 2"></a>
 <br><b>Exhibit 2 — Live capture running</b>
 <br><sub>Wi-Fi, no display filter, TCP, QUIC and UDP traffic</sub>
 </td>
@@ -80,7 +80,7 @@ Exhibits 1 to 3. Click a screenshot to open it full size.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex3"></a>
-<a href="screenshots/ss-03-network-info.PNG"><img src="screenshots/ss-03-network-info.PNG" width="380" alt="Exhibit 3"></a>
+<a href="Screenshots/ss-03-network-info.PNG"><img src="Screenshots/ss-03-network-info.PNG" width="380" alt="Exhibit 3"></a>
 <br><b>Exhibit 3 — <code>ipconfig</code> output</b>
 <br><sub>IPv4 <code>192.168.100.38</code>, mask <code>255.255.255.0</code>, gateway <code>192.168.100.1</code></sub>
 </td>
@@ -98,13 +98,13 @@ Exhibits 4 to 8.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex4"></a>
-<a href="screenshots/ss-04-nxdomain-terminal-output.PNG"><img src="screenshots/ss-04-nxdomain-terminal-output.PNG" width="380" alt="Exhibit 4"></a>
+<a href="Screenshots/ss-04-nxdomain-terminal-output.PNG"><img src="Screenshots/ss-04-nxdomain-terminal-output.PNG" width="380" alt="Exhibit 4"></a>
 <br><b>Exhibit 4 — <code>nslookup</code> result</b>
 <br><sub>"Non-existent domain" from server <code>192.0.2.1</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex5"></a>
-<a href="screenshots/s-05-dns-filter-applied.PNG"><img src="screenshots/s-05-dns-filter-applied.PNG" width="380" alt="Exhibit 5"></a>
+<a href="Screenshots/s-05-dns-filter-applied.PNG"><img src="Screenshots/s-05-dns-filter-applied.PNG" width="380" alt="Exhibit 5"></a>
 <br><b>Exhibit 5 — <code>dns</code> filter</b>
 <br><sub>Queries to both DNS servers, <code>192.0.2.1</code> and <code>192.0.2.2</code></sub>
 </td>
@@ -112,13 +112,13 @@ Exhibits 4 to 8.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex6"></a>
-<a href="screenshots/ss-06-dns-query-packet-detail.PNG"><img src="screenshots/ss-06-dns-query-packet-detail.PNG" width="380" alt="Exhibit 6"></a>
+<a href="Screenshots/ss-06-dns-query-packet-detail.PNG"><img src="Screenshots/ss-06-dns-query-packet-detail.PNG" width="380" alt="Exhibit 6"></a>
 <br><b>Exhibit 6 — Failing query isolated</b>
 <br><sub>8 packets: four queries (A, AAAA, A, AAAA) and four "No such name" replies</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex7"></a>
-<a href="screenshots/ss-07-dns-nxdomain-response-detail.PNG"><img src="screenshots/ss-07-dns-nxdomain-response-detail.PNG" width="380" alt="Exhibit 7"></a>
+<a href="Screenshots/ss-07-dns-nxdomain-response-detail.PNG"><img src="Screenshots/ss-07-dns-nxdomain-response-detail.PNG" width="380" alt="Exhibit 7"></a>
 <br><b>Exhibit 7 — NXDOMAIN response</b>
 <br><sub>Frame 2059, flags <code>0x8183</code>, SOA for <code>com</code> from <code>a.gtld-servers.net</code></sub>
 </td>
@@ -126,7 +126,7 @@ Exhibits 4 to 8.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex8"></a>
-<a href="screenshots/ss-08-case1-annotated-analysis.PNG"><img src="screenshots/ss-08-case1-annotated-analysis.PNG" width="380" alt="Exhibit 8"></a>
+<a href="Screenshots/ss-08-case1-annotated-analysis.PNG"><img src="Screenshots/ss-08-case1-annotated-analysis.PNG" width="380" alt="Exhibit 8"></a>
 <br><b>Exhibit 8 — Case 1 analysis notes</b>
 <br><sub>My notes in Hinglish. The README has an English version</sub>
 </td>
@@ -144,13 +144,13 @@ Exhibits 9 to 15.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex9"></a>
-<a href="screenshots/ss-09-capture-restart-dialog.PNG"><img src="screenshots/ss-09-capture-restart-dialog.PNG" width="380" alt="Exhibit 9"></a>
+<a href="Screenshots/ss-09-capture-restart-dialog.PNG"><img src="Screenshots/ss-09-capture-restart-dialog.PNG" width="380" alt="Exhibit 9"></a>
 <br><b>Exhibit 9 — Restart dialog</b>
 <br><sub>"Unsaved packets" prompt, Case 1 DNS packets still on screen</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex10"></a>
-<a href="screenshots/ss-10-capture-restarted-fresh.PNG"><img src="screenshots/ss-10-capture-restarted-fresh.PNG" width="380" alt="Exhibit 10"></a>
+<a href="Screenshots/ss-10-capture-restarted-fresh.PNG"><img src="Screenshots/ss-10-capture-restarted-fresh.PNG" width="380" alt="Exhibit 10"></a>
 <br><b>Exhibit 10 — Restarted capture</b>
 <br><sub>Empty list because the Case 1 filter is still applied</sub>
 </td>
@@ -158,13 +158,13 @@ Exhibits 9 to 15.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex11"></a>
-<a href="screenshots/ss-11-tcp-retransmission-filter.PNG"><img src="screenshots/ss-11-tcp-retransmission-filter.PNG" width="380" alt="Exhibit 11"></a>
+<a href="Screenshots/ss-11-tcp-retransmission-filter.PNG"><img src="Screenshots/ss-11-tcp-retransmission-filter.PNG" width="380" alt="Exhibit 11"></a>
 <br><b>Exhibit 11 — Retransmission filter</b>
 <br><sub><code>[TCP Fast Retransmission]</code> rows from <code>141.95.207.211:443</code>, all <code>Len=1412</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex12"></a>
-<a href="screenshots/ss-12-retransmitted-packet-detail.PNG"><img src="screenshots/ss-12-retransmitted-packet-detail.PNG" width="380" alt="Exhibit 12"></a>
+<a href="Screenshots/ss-12-retransmitted-packet-detail.PNG"><img src="Screenshots/ss-12-retransmitted-packet-detail.PNG" width="380" alt="Exhibit 12"></a>
 <br><b>Exhibit 12 — Retransmitted packet</b>
 <br><sub>Frame 470777, stream index 180, segment length 1412</sub>
 </td>
@@ -172,13 +172,13 @@ Exhibits 9 to 15.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex13"></a>
-<a href="screenshots/ss-12a-retransmitted-packet-detai.PNG"><img src="screenshots/ss-12a-retransmitted-packet-detai.PNG" width="380" alt="Exhibit 13"></a>
+<a href="Screenshots/ss-12a-retransmitted-packet-detai.PNG"><img src="Screenshots/ss-12a-retransmitted-packet-detai.PNG" width="380" alt="Exhibit 13"></a>
 <br><b>Exhibit 13 — Retransmitted segment data</b>
 <br><sub><code>Retransmitted TCP segment data (1412 bytes)</code> with the payload highlighted</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex14"></a>
-<a href="screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG"><img src="screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG" width="380" alt="Exhibit 14"></a>
+<a href="Screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG"><img src="Screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG" width="380" alt="Exhibit 14"></a>
 <br><b>Exhibit 14 — SEQ/ACK analysis</b>
 <br><sub>Window 501 (calculated 64128), server contiguous streams 7</sub>
 </td>
@@ -186,7 +186,7 @@ Exhibits 9 to 15.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex15"></a>
-<a href="screenshots/ss-13-case2-annotated-analysis.PNG"><img src="screenshots/ss-13-case2-annotated-analysis.PNG" width="380" alt="Exhibit 15"></a>
+<a href="Screenshots/ss-13-case2-annotated-analysis.PNG"><img src="Screenshots/ss-13-case2-annotated-analysis.PNG" width="380" alt="Exhibit 15"></a>
 <br><b>Exhibit 15 — Case 2 analysis notes</b>
 <br><sub>My notes in Hinglish. The only source for the download speed</sub>
 </td>
@@ -204,13 +204,13 @@ Exhibits 16 to 20.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex16"></a>
-<a href="screenshots/ss-17-ip-settings-manual.PNG"><img src="screenshots/ss-17-ip-settings-manual.PNG" width="380" alt="Exhibit 16"></a>
+<a href="Screenshots/ss-17-ip-settings-manual.PNG"><img src="Screenshots/ss-17-ip-settings-manual.PNG" width="380" alt="Exhibit 16"></a>
 <br><b>Exhibit 16 — Manual IPv4 settings</b>
 <br><sub><code>192.168.100.38</code>, DNS <code>192.0.2.1</code> and <code>192.0.2.2</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex17"></a>
-<a href="screenshots/ss-14-arp-conflict-probe-announcement.PNG"><img src="screenshots/ss-14-arp-conflict-probe-announcement.PNG" width="380" alt="Exhibit 17"></a>
+<a href="Screenshots/ss-14-arp-conflict-probe-announcement.PNG"><img src="Screenshots/ss-14-arp-conflict-probe-announcement.PNG" width="380" alt="Exhibit 17"></a>
 <br><b>Exhibit 17 — ARP probes and announcement</b>
 <br><sub>Three probes, then one <code>ARP Announcement for 192.168.100.38</code></sub>
 </td>
@@ -218,13 +218,13 @@ Exhibits 16 to 20.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex18"></a>
-<a href="screenshots/ss-15-arp-conflict-check.PNG"><img src="screenshots/ss-15-arp-conflict-check.PNG" width="380" alt="Exhibit 18"></a>
+<a href="Screenshots/ss-15-arp-conflict-check.PNG"><img src="Screenshots/ss-15-arp-conflict-check.PNG" width="380" alt="Exhibit 18"></a>
 <br><b>Exhibit 18 — ARP reply check</b>
 <br><sub>14 replies, all from <code>00:24:d7:28:69:f8</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex19"></a>
-<a href="screenshots/ss-18-arp-table-crosscheck.PNG"><img src="screenshots/ss-18-arp-table-crosscheck.PNG" width="380" alt="Exhibit 19"></a>
+<a href="Screenshots/ss-18-arp-table-crosscheck.PNG"><img src="Screenshots/ss-18-arp-table-crosscheck.PNG" width="380" alt="Exhibit 19"></a>
 <br><b>Exhibit 19 — <code>arp -a</code> table</b>
 <br><sub>One dynamic entry: the gateway at <code>04-8c-16-67-f4-9a</code></sub>
 </td>
@@ -232,7 +232,7 @@ Exhibits 16 to 20.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex20"></a>
-<a href="screenshots/ss-16-case3-annotated-analysis.PNG"><img src="screenshots/ss-16-case3-annotated-analysis.PNG" width="380" alt="Exhibit 20"></a>
+<a href="Screenshots/ss-16-case3-annotated-analysis.PNG"><img src="Screenshots/ss-16-case3-annotated-analysis.PNG" width="380" alt="Exhibit 20"></a>
 <br><b>Exhibit 20 — Case 3 analysis notes</b>
 <br><sub>My notes in Hinglish. The README has an English version</sub>
 </td>
@@ -250,13 +250,13 @@ Exhibits 21 to 26. The ⚠️ items were captured while Wireshark was still load
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex21"></a>
-<a href="screenshots/ss-19-protocol-hierarchy.PNG"><img src="screenshots/ss-19-protocol-hierarchy.PNG" width="380" alt="Exhibit 21"></a>
+<a href="Screenshots/ss-19-protocol-hierarchy.PNG"><img src="Screenshots/ss-19-protocol-hierarchy.PNG" width="380" alt="Exhibit 21"></a>
 <br><b>Exhibit 21 — Protocol Hierarchy</b>
 <br><sub>860,523 frames, about 728 MB. TCP is 87.2% of packets</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex22"></a>
-<a href="screenshots/ss-20-conversations-tcp.PNG"><img src="screenshots/ss-20-conversations-tcp.PNG" width="380" alt="Exhibit 22"></a>
+<a href="Screenshots/ss-20-conversations-tcp.PNG"><img src="Screenshots/ss-20-conversations-tcp.PNG" width="380" alt="Exhibit 22"></a>
 <br><b>Exhibit 22 — Conversations ⚠️</b>
 <br><sub>752 TCP and 1,557 UDP conversations. Window still says "Loading"</sub>
 </td>
@@ -264,13 +264,13 @@ Exhibits 21 to 26. The ⚠️ items were captured while Wireshark was still load
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex23"></a>
-<a href="screenshots/ss-21-io-graph.PNG"><img src="screenshots/ss-21-io-graph.PNG" width="380" alt="Exhibit 23"></a>
+<a href="Screenshots/ss-21-io-graph.PNG"><img src="Screenshots/ss-21-io-graph.PNG" width="380" alt="Exhibit 23"></a>
 <br><b>Exhibit 23 — I/O Graph ⚠️</b>
 <br><sub>"All Packets" and "TCP Errors" (<code>tcp.analysis.flags</code>), one spike</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex24"></a>
-<a href="screenshots/ss-22-save-pcap-dialog.PNG"><img src="screenshots/ss-22-save-pcap-dialog.PNG" width="380" alt="Exhibit 24"></a>
+<a href="Screenshots/ss-22-save-pcap-dialog.PNG"><img src="Screenshots/ss-22-save-pcap-dialog.PNG" width="380" alt="Exhibit 24"></a>
 <br><b>Exhibit 24 — Save dialog</b>
 <br><sub>An earlier full-capture file is listed. New name: <code>sample-capture</code></sub>
 </td>
@@ -278,13 +278,13 @@ Exhibits 21 to 26. The ⚠️ items were captured while Wireshark was still load
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex25"></a>
-<a href="screenshots/ss-23-pcap-files-folder.PNG"><img src="screenshots/ss-23-pcap-files-folder.PNG" width="380" alt="Exhibit 25"></a>
+<a href="Screenshots/ss-23-pcap-files-folder.PNG"><img src="Screenshots/ss-23-pcap-files-folder.PNG" width="380" alt="Exhibit 25"></a>
 <br><b>Exhibit 25 — Documents folder</b>
 <br><sub><code>sample-capture</code>, modified 9/15/2026 5:43 PM</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex26"></a>
-<a href="screenshots/ss-24-project-summary-doc.PNG"><img src="screenshots/ss-24-project-summary-doc.PNG" width="380" alt="Exhibit 26"></a>
+<a href="Screenshots/ss-24-project-summary-doc.PNG"><img src="Screenshots/ss-24-project-summary-doc.PNG" width="380" alt="Exhibit 26"></a>
 <br><b>Exhibit 26 — Project summary notes</b>
 <br><sub>My notes in Hinglish. Tools used: Wireshark, Command Prompt, adapter settings</sub>
 </td>

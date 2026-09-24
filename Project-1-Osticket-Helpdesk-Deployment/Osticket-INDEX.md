@@ -73,13 +73,13 @@ Exhibits 1 to 4. Click a screenshot to open it full size.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex1"></a>
-<a href="screenshots/01-azure-vm-overview.PNG"><img src="screenshots/01-azure-vm-overview.PNG" width="380" alt="Exhibit 1"></a>
+<a href="Screenshots/01-azure-vm-overview.PNG"><img src="Screenshots/01-azure-vm-overview.PNG" width="380" alt="Exhibit 1"></a>
 <br><b>Exhibit 1 — Azure VM overview</b>
 <br><sub><code>osticket-vm</code> running: Ubuntu 24.04, Standard B4as v2, India South Central</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex2"></a>
-<a href="screenshots/02-lamp-stack-install.PNG"><img src="screenshots/02-lamp-stack-install.PNG" width="380" alt="Exhibit 2"></a>
+<a href="Screenshots/02-lamp-stack-install.PNG"><img src="Screenshots/02-lamp-stack-install.PNG" width="380" alt="Exhibit 2"></a>
 <br><b>Exhibit 2 — LAMP install</b>
 <br><sub><code>apt install</code> for Apache, MySQL and PHP, run over SSH</sub>
 </td>
@@ -87,13 +87,13 @@ Exhibits 1 to 4. Click a screenshot to open it full size.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex3"></a>
-<a href="screenshots/03-apache-status.PNG"><img src="screenshots/03-apache-status.PNG" width="380" alt="Exhibit 3"></a>
+<a href="Screenshots/03-apache-status.PNG"><img src="Screenshots/03-apache-status.PNG" width="380" alt="Exhibit 3"></a>
 <br><b>Exhibit 3 — Apache running</b>
 <br><sub><code>active (running)</code>. The lines above show an early config copy that failed</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex4"></a>
-<a href="screenshots/04-mysql-database-setup.PNG"><img src="screenshots/04-mysql-database-setup.PNG" width="380" alt="Exhibit 4"></a>
+<a href="Screenshots/04-mysql-database-setup.PNG"><img src="Screenshots/04-mysql-database-setup.PNG" width="380" alt="Exhibit 4"></a>
 <br><b>Exhibit 4 — MySQL setup</b>
 <br><sub>MySQL 8.0.46: database, user, grant and flush all <code>Query OK</code></sub>
 </td>
@@ -110,13 +110,13 @@ Exhibits 5 to 14.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex5"></a>
-<a href="screenshots/05-osticket-download-unzip.PNG"><img src="screenshots/05-osticket-download-unzip.PNG" width="380" alt="Exhibit 5"></a>
+<a href="Screenshots/05-osticket-download-unzip.PNG"><img src="Screenshots/05-osticket-download-unzip.PNG" width="380" alt="Exhibit 5"></a>
 <br><b>Exhibit 5 — Download and <code>unzip</code> install</b>
 <br><sub><code>osTicket-v1.18.1.zip</code> saved at 21:22:46 UTC</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex6"></a>
-<a href="screenshots/05-osticket-unzip.PNG"><img src="screenshots/05-osticket-unzip.PNG" width="380" alt="Exhibit 6"></a>
+<a href="Screenshots/05-osticket-unzip.PNG"><img src="Screenshots/05-osticket-unzip.PNG" width="380" alt="Exhibit 6"></a>
 <br><b>Exhibit 6 — Second download and unzip</b>
 <br><sub><code>.zip.1</code> saved (same size), archive extracted into <code>osticket</code></sub>
 </td>
@@ -124,13 +124,13 @@ Exhibits 5 to 14.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex7"></a>
-<a href="screenshots/07-ssh-cmd-error.PNG"><img src="screenshots/07-ssh-cmd-error.PNG" width="380" alt="Exhibit 7"></a>
+<a href="Screenshots/07-ssh-cmd-error.PNG"><img src="Screenshots/07-ssh-cmd-error.PNG" width="380" alt="Exhibit 7"></a>
 <br><b>Exhibit 7 — Wrong machine</b>
 <br><sub><code>'ls'</code> and <code>'sudo'</code> not recognized in the local Windows prompt</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex8"></a>
-<a href="screenshots/06-osticket-files-copied.PNG"><img src="screenshots/06-osticket-files-copied.PNG" width="380" alt="Exhibit 8"></a>
+<a href="Screenshots/06-osticket-files-copied.PNG"><img src="Screenshots/06-osticket-files-copied.PNG" width="380" alt="Exhibit 8"></a>
 <br><b>Exhibit 8 — Files copied on the VM</b>
 <br><sub>Web root filled, <code>ost-config.php</code> created from the sample</sub>
 </td>
@@ -138,13 +138,13 @@ Exhibits 5 to 14.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex9"></a>
-<a href="screenshots/08-installer-prerequisites.PNG"><img src="screenshots/08-installer-prerequisites.PNG" width="380" alt="Exhibit 9"></a>
+<a href="Screenshots/08-installer-prerequisites.PNG"><img src="Screenshots/08-installer-prerequisites.PNG" width="380" alt="Exhibit 9"></a>
 <br><b>Exhibit 9 — Installer prerequisites</b>
 <br><sub>PHP 8.3.6 ✅, MySQLi ✅. Only the optional Intl extension shows ❌</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex10"></a>
-<a href="screenshots/09-installer-form-blank.PNG"><img src="screenshots/09-installer-form-blank.PNG" width="380" alt="Exhibit 10"></a>
+<a href="Screenshots/09-installer-form-blank.PNG"><img src="Screenshots/09-installer-form-blank.PNG" width="380" alt="Exhibit 10"></a>
 <br><b>Exhibit 10 — Blank installer form</b>
 <br><sub>Helpdesk URL <code>http://172.198.77.154/</code>, table prefix <code>ost_</code></sub>
 </td>
@@ -152,13 +152,13 @@ Exhibits 5 to 14.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex11"></a>
-<a href="screenshots/10-installer-form-filled.PNG"><img src="screenshots/10-installer-form-filled.PNG" width="380" alt="Exhibit 11"></a>
+<a href="Screenshots/10-installer-form-filled.PNG"><img src="Screenshots/10-installer-form-filled.PNG" width="380" alt="Exhibit 11"></a>
 <br><b>Exhibit 11 — Filled installer form</b>
 <br><sub>Helpdesk name, admin account and database <code>osticket</code> on <code>localhost</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex12"></a>
-<a href="screenshots/11-installation-complete.PNG"><img src="screenshots/11-installation-complete.PNG" width="380" alt="Exhibit 12"></a>
+<a href="Screenshots/11-installation-complete.PNG"><img src="Screenshots/11-installation-complete.PNG" width="380" alt="Exhibit 12"></a>
 <br><b>Exhibit 12 — Installation complete</b>
 <br><sub>"Congratulations!" and the <code>chmod 0644</code> instruction</sub>
 </td>
@@ -166,13 +166,13 @@ Exhibits 5 to 14.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex13"></a>
-<a href="screenshots/13-scp-login.PNG"><img src="screenshots/13-scp-login.PNG" width="380" alt="Exhibit 13"></a>
+<a href="Screenshots/13-scp-login.PNG"><img src="Screenshots/13-scp-login.PNG" width="380" alt="Exhibit 13"></a>
 <br><b>Exhibit 13 — Staff panel login</b>
 <br><sub>"Authentication Required" at <code>/scp</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex14"></a>
-<a href="screenshots/12-agent-first-login.PNG"><img src="screenshots/12-agent-first-login.PNG" width="380" alt="Exhibit 14"></a>
+<a href="Screenshots/12-agent-first-login.PNG"><img src="Screenshots/12-agent-first-login.PNG" width="380" alt="Exhibit 14"></a>
 <br><b>Exhibit 14 — First login</b>
 <br><sub>Only the system ticket <code>#331925</code> "osTicket Installed!"</sub>
 </td>
@@ -189,13 +189,13 @@ Exhibits 15 to 21.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex15"></a>
-<a href="screenshots/15-sla-priority-add.PNG"><img src="screenshots/15-sla-priority-add.PNG" width="380" alt="Exhibit 15"></a>
+<a href="Screenshots/15-sla-priority-add.PNG"><img src="Screenshots/15-sla-priority-add.PNG" width="380" alt="Exhibit 15"></a>
 <br><b>Exhibit 15 — Priority SLA</b>
 <br><sub>Active, grace period 4 hours, schedule "System Default"</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex16"></a>
-<a href="screenshots/14-sla-standard-add.PNG"><img src="screenshots/14-sla-standard-add.PNG" width="380" alt="Exhibit 16"></a>
+<a href="Screenshots/14-sla-standard-add.PNG"><img src="Screenshots/14-sla-standard-add.PNG" width="380" alt="Exhibit 16"></a>
 <br><b>Exhibit 16 — Standard SLA</b>
 <br><sub>Active, grace period 24 hours, schedule "System Default"</sub>
 </td>
@@ -203,13 +203,13 @@ Exhibits 15 to 21.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex17"></a>
-<a href="screenshots/16-sla-final-list.PNG"><img src="screenshots/16-sla-final-list.PNG" width="380" alt="Exhibit 17"></a>
+<a href="Screenshots/16-sla-final-list.PNG"><img src="Screenshots/16-sla-final-list.PNG" width="380" alt="Exhibit 17"></a>
 <br><b>Exhibit 17 — SLA list</b>
 <br><sub>3 plans. The "delete the setup directory" warning is still visible</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex18"></a>
-<a href="screenshots/16b-sla-final-list-alt.PNG"><img src="screenshots/16b-sla-final-list-alt.PNG" width="380" alt="Exhibit 18"></a>
+<a href="Screenshots/16b-sla-final-list-alt.PNG"><img src="Screenshots/16b-sla-final-list-alt.PNG" width="380" alt="Exhibit 18"></a>
 <br><b>Exhibit 18 — SLA list, later screenshot</b>
 <br><sub>Same 3 plans, no warning banner</sub>
 </td>
@@ -217,13 +217,13 @@ Exhibits 15 to 21.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex19"></a>
-<a href="screenshots/17-departments-before.PNG"><img src="screenshots/17-departments-before.PNG" width="380" alt="Exhibit 19"></a>
+<a href="Screenshots/17-departments-before.PNG"><img src="Screenshots/17-departments-before.PNG" width="380" alt="Exhibit 19"></a>
 <br><b>Exhibit 19 — Departments before</b>
 <br><sub>Maintenance, Sales and Support (default), all from the install</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex20"></a>
-<a href="screenshots/18-departments-final.PNG"><img src="screenshots/18-departments-final.PNG" width="380" alt="Exhibit 20"></a>
+<a href="Screenshots/18-departments-final.PNG"><img src="Screenshots/18-departments-final.PNG" width="380" alt="Exhibit 20"></a>
 <br><b>Exhibit 20 — Departments after</b>
 <br><sub><code>Email/ VPN</code>, <code>IT</code> and <code>Network</code> added</sub>
 </td>
@@ -231,7 +231,7 @@ Exhibits 15 to 21.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex21"></a>
-<a href="screenshots/19-help-topics.PNG"><img src="screenshots/19-help-topics.PNG" width="380" alt="Exhibit 21"></a>
+<a href="Screenshots/19-help-topics.PNG"><img src="Screenshots/19-help-topics.PNG" width="380" alt="Exhibit 21"></a>
 <br><b>Exhibit 21 — Help topics</b>
 <br><sub>4 topics set the department and priority of a new ticket</sub>
 </td>
@@ -249,13 +249,13 @@ Exhibits 22 to 33. Each row is one ticket: the customer form on the left, the ag
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex22"></a>
-<a href="screenshots/20-ticket1-wifi.PNG"><img src="screenshots/20-ticket1-wifi.PNG" width="380" alt="Exhibit 22"></a>
+<a href="Screenshots/20-ticket1-wifi.PNG"><img src="Screenshots/20-ticket1-wifi.PNG" width="380" alt="Exhibit 22"></a>
 <br><b>Exhibit 22 — WiFi ticket, form</b>
 <br><sub>Ali Raza, "Report a Problem / Access Issue"</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex23"></a>
-<a href="screenshots/26-wifi-reply.PNG"><img src="screenshots/26-wifi-reply.PNG" width="380" alt="Exhibit 23"></a>
+<a href="Screenshots/26-wifi-reply.PNG"><img src="Screenshots/26-wifi-reply.PNG" width="380" alt="Exhibit 23"></a>
 <br><b>Exhibit 23 — WiFi ticket, reply</b>
 <br><sub><code>#693589</code> closed ✅ after 13 min 29 s</sub>
 </td>
@@ -263,13 +263,13 @@ Exhibits 22 to 33. Each row is one ticket: the customer form on the left, the ag
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex24"></a>
-<a href="screenshots/21-ticket2-email.PNG"><img src="screenshots/21-ticket2-email.PNG" width="380" alt="Exhibit 24"></a>
+<a href="Screenshots/21-ticket2-email.PNG"><img src="Screenshots/21-ticket2-email.PNG" width="380" alt="Exhibit 24"></a>
 <br><b>Exhibit 24 — Email ticket, form</b>
 <br><sub>Sara Khan, "Report a Problem / Access Issue"</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex25"></a>
-<a href="screenshots/28-email-resolve.PNG"><img src="screenshots/28-email-resolve.PNG" width="380" alt="Exhibit 25"></a>
+<a href="Screenshots/28-email-resolve.PNG"><img src="Screenshots/28-email-resolve.PNG" width="380" alt="Exhibit 25"></a>
 <br><b>Exhibit 25 — Email ticket, reply</b>
 <br><sub><code>#196889</code> closed ✅ after 14 min 52 s</sub>
 </td>
@@ -277,13 +277,13 @@ Exhibits 22 to 33. Each row is one ticket: the customer form on the left, the ag
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex26"></a>
-<a href="screenshots/22-ticket3-vpn.PNG"><img src="screenshots/22-ticket3-vpn.PNG" width="380" alt="Exhibit 26"></a>
+<a href="Screenshots/22-ticket3-vpn.PNG"><img src="Screenshots/22-ticket3-vpn.PNG" width="380" alt="Exhibit 26"></a>
 <br><b>Exhibit 26 — VPN ticket, form</b>
 <br><sub>Hamza Tariq, "Report a Problem"</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex27"></a>
-<a href="screenshots/29-vpn-resolve.PNG"><img src="screenshots/29-vpn-resolve.PNG" width="380" alt="Exhibit 27"></a>
+<a href="Screenshots/29-vpn-resolve.PNG"><img src="Screenshots/29-vpn-resolve.PNG" width="380" alt="Exhibit 27"></a>
 <br><b>Exhibit 27 — VPN ticket, reply</b>
 <br><sub><code>#505400</code> Maintenance, closed ✅ after 14 min 43 s</sub>
 </td>
@@ -291,13 +291,13 @@ Exhibits 22 to 33. Each row is one ticket: the customer form on the left, the ag
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex28"></a>
-<a href="screenshots/23-ticket4-password.PNG"><img src="screenshots/23-ticket4-password.PNG" width="380" alt="Exhibit 28"></a>
+<a href="Screenshots/23-ticket4-password.PNG"><img src="Screenshots/23-ticket4-password.PNG" width="380" alt="Exhibit 28"></a>
 <br><b>Exhibit 28 — Password ticket, form</b>
 <br><sub>Ayesha Malik, "General Inquiry"</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex29"></a>
-<a href="screenshots/30-password-resolve.PNG"><img src="screenshots/30-password-resolve.PNG" width="380" alt="Exhibit 29"></a>
+<a href="Screenshots/30-password-resolve.PNG"><img src="Screenshots/30-password-resolve.PNG" width="380" alt="Exhibit 29"></a>
 <br><b>Exhibit 29 — Password ticket, reply</b>
 <br><sub><code>#894015</code> still 🟠 Open, never closed</sub>
 </td>
@@ -305,13 +305,13 @@ Exhibits 22 to 33. Each row is one ticket: the customer form on the left, the ag
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex30"></a>
-<a href="screenshots/24-ticket5-printer.PNG"><img src="screenshots/24-ticket5-printer.PNG" width="380" alt="Exhibit 30"></a>
+<a href="Screenshots/24-ticket5-printer.PNG"><img src="Screenshots/24-ticket5-printer.PNG" width="380" alt="Exhibit 30"></a>
 <br><b>Exhibit 30 — Printer ticket, form</b>
 <br><sub>Bilal Ahmed, "Report a Problem / Access Issue"</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex31"></a>
-<a href="screenshots/27-printer-resolve.PNG"><img src="screenshots/27-printer-resolve.PNG" width="380" alt="Exhibit 31"></a>
+<a href="Screenshots/27-printer-resolve.PNG"><img src="Screenshots/27-printer-resolve.PNG" width="380" alt="Exhibit 31"></a>
 <br><b>Exhibit 31 — Printer ticket, reply</b>
 <br><sub><code>#738368</code> closed ✅ after 9 min 0 s</sub>
 </td>
@@ -319,13 +319,13 @@ Exhibits 22 to 33. Each row is one ticket: the customer form on the left, the ag
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex32"></a>
-<a href="screenshots/25-all-open-tickets.PNG"><img src="screenshots/25-all-open-tickets.PNG" width="380" alt="Exhibit 32"></a>
+<a href="Screenshots/25-all-open-tickets.PNG"><img src="Screenshots/25-all-open-tickets.PNG" width="380" alt="Exhibit 32"></a>
 <br><b>Exhibit 32 — Open queue</b>
 <br><sub>All five tickets plus the system ticket: "Showing 1 - 6 of about 6"</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex33"></a>
-<a href="screenshots/31-closed-tickets.PNG"><img src="screenshots/31-closed-tickets.PNG" width="380" alt="Exhibit 33"></a>
+<a href="Screenshots/31-closed-tickets.PNG"><img src="Screenshots/31-closed-tickets.PNG" width="380" alt="Exhibit 33"></a>
 <br><b>Exhibit 33 — Closed list</b>
 <br><sub>4 tickets closed. <code>#894015</code> is not in it</sub>
 </td>

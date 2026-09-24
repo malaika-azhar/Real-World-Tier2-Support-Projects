@@ -16,7 +16,7 @@ Network Troubleshooting (Wireshark)
 
 Three network problems captured live on a Windows PC and read packet by packet in Wireshark — a DNS lookup failure, TCP retransmissions during a large download, and Windows' ARP duplicate-IP check. Each result is backed by a screenshot, and every limit of the lab is written down.
 
-### [📑 Open the visual index](wireshark-INDEX.md)
+### [📑 Open the visual index](Wireshark-INDEX.md)
 
 </div>
 
@@ -184,14 +184,14 @@ gantt
 ### Step 1 — Select the Wi-Fi interface ✅
 
 <p align="center">
-  <img src="screenshots/ss-01-wireshark-interface-select.PNG" alt="Exhibit 1 - Wireshark interface selection" width="850"><br>
+  <img src="Screenshots/ss-01-wireshark-interface-select.PNG" alt="Exhibit 1 - Wireshark interface selection" width="850"><br>
   <em>Exhibit 1 — Wireshark 4.6.8 start screen with the <code>Wi-Fi</code> interface highlighted</em>
 </p>
 
 ### Step 2 — Start a live capture ✅
 
 <p align="center">
-  <img src="screenshots/ss-02-capture-start.PNG" alt="Exhibit 2 - Capture running" width="850"><br>
+  <img src="Screenshots/ss-02-capture-start.PNG" alt="Exhibit 2 - Capture running" width="850"><br>
   <em>Exhibit 2 — Capture running on Wi-Fi with no display filter, showing TCP, QUIC and UDP traffic</em>
 </p>
 
@@ -202,7 +202,7 @@ ipconfig
 ```
 
 <p align="center">
-  <img src="screenshots/ss-03-network-info.PNG" alt="Exhibit 3 - ipconfig output" width="850"><br>
+  <img src="Screenshots/ss-03-network-info.PNG" alt="Exhibit 3 - ipconfig output" width="850"><br>
   <em>Exhibit 3 — <code>ipconfig</code>: the Wi-Fi adapter has IPv4 <code>192.168.100.38</code>, mask <code>255.255.255.0</code>, gateway <code>192.168.100.1</code></em>
 </p>
 
@@ -220,7 +220,7 @@ nslookup nonexistentdomain12345.com
 ```
 
 <p align="center">
-  <img src="screenshots/ss-04-nxdomain-terminal-output.PNG" alt="Exhibit 4 - nslookup output" width="850"><br>
+  <img src="Screenshots/ss-04-nxdomain-terminal-output.PNG" alt="Exhibit 4 - nslookup output" width="850"><br>
   <em>Exhibit 4 — <code>nslookup</code> answers "Non-existent domain" from server <code>192.0.2.1</code></em>
 </p>
 
@@ -231,7 +231,7 @@ dns
 ```
 
 <p align="center">
-  <img src="screenshots/s-05-dns-filter-applied.PNG" alt="Exhibit 5 - dns filter" width="850"><br>
+  <img src="Screenshots/s-05-dns-filter-applied.PNG" alt="Exhibit 5 - dns filter" width="850"><br>
   <em>Exhibit 5 — The <code>dns</code> filter: queries go to <code>192.0.2.1</code>, and later rows go to <code>192.0.2.2</code></em>
 </p>
 
@@ -242,7 +242,7 @@ dns.qry.name contains "nonexistentdomain"
 ```
 
 <p align="center">
-  <img src="screenshots/ss-06-dns-query-packet-detail.PNG" alt="Exhibit 6 - Query packet detail" width="850"><br>
+  <img src="Screenshots/ss-06-dns-query-packet-detail.PNG" alt="Exhibit 6 - Query packet detail" width="850"><br>
   <em>Exhibit 6 — 8 packets left: four queries (A, AAAA, A, AAAA) and four "No such name" responses. Frame 2058 is the first query, flags <code>0x0100</code></em>
 </p>
 
@@ -264,14 +264,14 @@ Capture-relative times from Exhibit 6, all between the PC `192.168.100.38` and t
 ### Step 7 — Read the NXDOMAIN response ✅
 
 <p align="center">
-  <img src="screenshots/ss-07-dns-nxdomain-response-detail.PNG" alt="Exhibit 7 - NXDOMAIN response detail" width="850"><br>
+  <img src="Screenshots/ss-07-dns-nxdomain-response-detail.PNG" alt="Exhibit 7 - NXDOMAIN response detail" width="850"><br>
   <em>Exhibit 7 — Frame 2059: flags <code>0x8183</code> Standard query response, "No such name", with an SOA record for <code>com</code> from <code>a.gtld-servers.net</code></em>
 </p>
 
 **Analysis notes (English version of Exhibit 8):**
 
 <p align="center">
-  <img src="screenshots/ss-08-case1-annotated-analysis.PNG" alt="Exhibit 8 - Case 1 analysis notes" width="850"><br>
+  <img src="Screenshots/ss-08-case1-annotated-analysis.PNG" alt="Exhibit 8 - Case 1 analysis notes" width="850"><br>
   <em>Exhibit 8 — My own Case 1 notes, written in Hinglish</em>
 </p>
 
@@ -330,12 +330,12 @@ flowchart TB
 The capture was restarted without saving, so Case 2 traffic would not be mixed with Case 1's DNS packets.
 
 <p align="center">
-  <img src="screenshots/ss-09-capture-restart-dialog.PNG" alt="Exhibit 9 - Restart dialog" width="850"><br>
+  <img src="Screenshots/ss-09-capture-restart-dialog.PNG" alt="Exhibit 9 - Restart dialog" width="850"><br>
   <em>Exhibit 9 — The "Unsaved packets" dialog when restarting the capture, with the Case 1 DNS packets still on screen</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/ss-10-capture-restarted-fresh.PNG" alt="Exhibit 10 - Restarted capture" width="850"><br>
+  <img src="Screenshots/ss-10-capture-restarted-fresh.PNG" alt="Exhibit 10 - Restarted capture" width="850"><br>
   <em>Exhibit 10 — Fresh capture with an empty list. The old Case 1 filter is still applied, which is why nothing shows</em>
 </p>
 
@@ -350,33 +350,33 @@ tcp.analysis.retransmission
 ```
 
 <p align="center">
-  <img src="screenshots/ss-11-tcp-retransmission-filter.PNG" alt="Exhibit 11 - Retransmission filter" width="850"><br>
+  <img src="Screenshots/ss-11-tcp-retransmission-filter.PNG" alt="Exhibit 11 - Retransmission filter" width="850"><br>
   <em>Exhibit 11 — Rows flagged <code>[TCP Fast Retransmission]</code> from <code>141.95.207.211</code> port 443 to <code>192.168.100.38</code> port 50829, all with <code>Len=1412</code>. The detail pane below shows an unrelated packet; see Exhibit 12 for a flagged one</em>
 </p>
 
 ### Step 11 — Open one retransmitted packet ✅
 
 <p align="center">
-  <img src="screenshots/ss-12-retransmitted-packet-detail.PNG" alt="Exhibit 12 - Retransmitted packet detail" width="850"><br>
+  <img src="Screenshots/ss-12-retransmitted-packet-detail.PNG" alt="Exhibit 12 - Retransmitted packet detail" width="850"><br>
   <em>Exhibit 12 — Frame 470777 (1466 bytes): source port 443, destination port 50829, stream index 180, TCP segment length 1412, next sequence number = sequence number + 1412</em>
 </p>
 
 ### Step 12 — Confirm the retransmitted data field ✅
 
 <p align="center">
-  <img src="screenshots/ss-12a-retransmitted-packet-detai.PNG" alt="Exhibit 13 - Retransmitted TCP segment data" width="850"><br>
+  <img src="Screenshots/ss-12a-retransmitted-packet-detai.PNG" alt="Exhibit 13 - Retransmitted TCP segment data" width="850"><br>
   <em>Exhibit 13 — <code>Retransmitted TCP segment data (1412 bytes)</code> selected, with the 1412 payload bytes highlighted</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG" alt="Exhibit 14 - SEQ/ACK analysis" width="850"><br>
+  <img src="Screenshots/ss-12b-retransmitted-packet-detail-seqack.PNG" alt="Exhibit 14 - SEQ/ACK analysis" width="850"><br>
   <em>Exhibit 14 — <code>SEQ/ACK analysis</code> selected: window 501 (calculated 64128), client contiguous streams 1, server contiguous streams 7</em>
 </p>
 
 **Analysis notes (English version of Exhibit 15):**
 
 <p align="center">
-  <img src="screenshots/ss-13-case2-annotated-analysis.PNG" alt="Exhibit 15 - Case 2 analysis notes" width="850"><br>
+  <img src="Screenshots/ss-13-case2-annotated-analysis.PNG" alt="Exhibit 15 - Case 2 analysis notes" width="850"><br>
   <em>Exhibit 15 — My own Case 2 notes, written in Hinglish</em>
 </p>
 
@@ -431,7 +431,7 @@ flowchart TB
 ### Step 13 — Re-apply the same static IP ✅
 
 <p align="center">
-  <img src="screenshots/ss-17-ip-settings-manual.PNG" alt="Exhibit 16 - Manual IP settings" width="850"><br>
+  <img src="Screenshots/ss-17-ip-settings-manual.PNG" alt="Exhibit 16 - Manual IP settings" width="850"><br>
   <em>Exhibit 16 — IPv4 properties set by hand: <code>192.168.100.38</code>, mask <code>255.255.255.0</code>, gateway <code>192.168.100.1</code>, DNS <code>192.0.2.1</code> and <code>192.0.2.2</code></em>
 </p>
 
@@ -442,7 +442,7 @@ arp
 ```
 
 <p align="center">
-  <img src="screenshots/ss-14-arp-conflict-probe-announcement.PNG" alt="Exhibit 17 - ARP probes and announcement" width="850"><br>
+  <img src="Screenshots/ss-14-arp-conflict-probe-announcement.PNG" alt="Exhibit 17 - ARP probes and announcement" width="850"><br>
   <em>Exhibit 17 — Three broadcast <code>ARP Probe</code> packets, then one <code>ARP Announcement for 192.168.100.38</code>, all from the PC's MAC</em>
 </p>
 
@@ -466,7 +466,7 @@ arp.opcode == 2 && arp.src.proto_ipv4 == 192.168.100.38
 ```
 
 <p align="center">
-  <img src="screenshots/ss-15-arp-conflict-check.PNG" alt="Exhibit 18 - ARP reply check" width="850"><br>
+  <img src="Screenshots/ss-15-arp-conflict-check.PNG" alt="Exhibit 18 - ARP reply check" width="850"><br>
   <em>Exhibit 18 — 14 ARP replies across the whole capture, every one saying <code>192.168.100.38 is at 00:24:d7:28:69:f8</code></em>
 </p>
 
@@ -477,14 +477,14 @@ arp -a
 ```
 
 <p align="center">
-  <img src="screenshots/ss-18-arp-table-crosscheck.PNG" alt="Exhibit 19 - ARP table" width="850"><br>
+  <img src="Screenshots/ss-18-arp-table-crosscheck.PNG" alt="Exhibit 19 - ARP table" width="850"><br>
   <em>Exhibit 19 — The PC's ARP table has one dynamic entry: gateway <code>192.168.100.1</code> at <code>04-8c-16-67-f4-9a</code>. The rest are static broadcast and multicast entries</em>
 </p>
 
 **Analysis notes (English version of Exhibit 20):**
 
 <p align="center">
-  <img src="screenshots/ss-16-case3-annotated-analysis.PNG" alt="Exhibit 20 - Case 3 analysis notes" width="850"><br>
+  <img src="Screenshots/ss-16-case3-annotated-analysis.PNG" alt="Exhibit 20 - Case 3 analysis notes" width="850"><br>
   <em>Exhibit 20 — My own Case 3 notes, written in Hinglish</em>
 </p>
 
@@ -607,7 +607,7 @@ Beyond the three cases, the whole capture was reviewed with Wireshark's statisti
 ### Protocol Hierarchy ✅
 
 <p align="center">
-  <img src="screenshots/ss-19-protocol-hierarchy.PNG" alt="Exhibit 21 - Protocol Hierarchy" width="850"><br>
+  <img src="Screenshots/ss-19-protocol-hierarchy.PNG" alt="Exhibit 21 - Protocol Hierarchy" width="850"><br>
   <em>Exhibit 21 — Statistics → Protocol Hierarchy, no display filter: 860,523 frames and about 728 MB in total</em>
 </p>
 
@@ -623,14 +623,14 @@ Beyond the three cases, the whole capture was reviewed with Wireshark's statisti
 ### Conversations ⚠️
 
 <p align="center">
-  <img src="screenshots/ss-20-conversations-tcp.PNG" alt="Exhibit 22 - Conversations TCP" width="850"><br>
+  <img src="Screenshots/ss-20-conversations-tcp.PNG" alt="Exhibit 22 - Conversations TCP" width="850"><br>
   <em>Exhibit 22 — Statistics → Conversations: 752 TCP and 1,557 UDP conversations (also 237 IPv4, 12 IPv6, 9 Ethernet). The window still says "Loading", and rows are sorted by address, so the heaviest stream is not visible</em>
 </p>
 
 ### I/O Graph ⚠️
 
 <p align="center">
-  <img src="screenshots/ss-21-io-graph.PNG" alt="Exhibit 23 - I/O Graph" width="850"><br>
+  <img src="Screenshots/ss-21-io-graph.PNG" alt="Exhibit 23 - I/O Graph" width="850"><br>
   <em>Exhibit 23 — Statistics → I/O Graph, 1-second intervals: "All Packets" and "TCP Errors" (<code>tcp.analysis.flags</code>). One spike near 1,150 to 1,200 s; the TCP Errors series is too small to see at this scale</em>
 </p>
 
@@ -642,12 +642,12 @@ The ⚠️ items are an overview only. They do not back up any finding above.
 ## 💾 Saved Capture
 
 <p align="center">
-  <img src="screenshots/ss-22-save-pcap-dialog.PNG" alt="Exhibit 24 - Save capture dialog" width="850"><br>
+  <img src="Screenshots/ss-22-save-pcap-dialog.PNG" alt="Exhibit 24 - Save capture dialog" width="850"><br>
   <em>Exhibit 24 — Save dialog in <code>C:\Users\RM\Documents</code>: an earlier <code>case3-arp-conflict-full-capture.pcapng</code> is listed, and the new file name is <code>sample-capture</code> (pcapng, uncompressed)</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/ss-23-pcap-files-folder.PNG" alt="Exhibit 25 - Documents folder" width="850"><br>
+  <img src="Screenshots/ss-23-pcap-files-folder.PNG" alt="Exhibit 25 - Documents folder" width="850"><br>
   <em>Exhibit 25 — Documents folder: <code>sample-capture</code> (type "Wireshark capture", modified 9/15/2026 5:43 PM). The full-capture file from Exhibit 24 is not in the folder</em>
 </p>
 
@@ -675,7 +675,7 @@ The full capture (860,523 packets) was not kept. A separate `sample-capture` fil
 **Summary notes (English version of Exhibit 26):**
 
 <p align="center">
-  <img src="screenshots/ss-24-project-summary-doc.PNG" alt="Exhibit 26 - Project summary notes" width="850"><br>
+  <img src="Screenshots/ss-24-project-summary-doc.PNG" alt="Exhibit 26 - Project summary notes" width="850"><br>
   <em>Exhibit 26 — My own project summary notes, written in Hinglish. Tools used: Wireshark, Command Prompt, Network Adapter Settings</em>
 </p>
 
@@ -782,8 +782,8 @@ These gaps are marked in the project instead of being hidden, so the results sho
 ```text
 wireshark-case-studies-project/
 |-- README.md
-|-- wireshark-INDEX.md
-`-- screenshots/
+|-- Wireshark-INDEX.md
+`-- Screenshots/
     |-- ss-01-wireshark-interface-select.PNG
     |-- ss-02-capture-start.PNG
     |-- ss-03-network-info.PNG

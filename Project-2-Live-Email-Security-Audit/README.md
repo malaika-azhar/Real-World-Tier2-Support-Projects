@@ -233,12 +233,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 1. paypal.com — Global Fintech
 
 <p align="center">
-  <img src="screenshots/01-paypal-spf.PNG" alt="Exhibit 1 - PayPal SPF" width="850"><br>
+  <img src="Screenshots/01-paypal-spf.PNG" alt="Exhibit 1 - PayPal SPF" width="850"><br>
   <em>Exhibit 1 — SPF for <code>paypal.com</code>: seven <code>include:</code> entries, ending in <code>~all</code> (SoftFail)</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/02-paypal-dmarc.PNG" alt="Exhibit 2 - PayPal DMARC" width="850"><br>
+  <img src="Screenshots/02-paypal-dmarc.PNG" alt="Exhibit 2 - PayPal DMARC" width="850"><br>
   <em>Exhibit 2 — DMARC for <code>paypal.com</code>: <code>p=reject</code>, with reports to agari.com and vali.email</em>
 </p>
 
@@ -257,12 +257,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 2. hbl.com — Pakistani Bank
 
 <p align="center">
-  <img src="screenshots/03-hbl-spf.PNG" alt="Exhibit 3 - HBL SPF" width="850"><br>
+  <img src="Screenshots/03-hbl-spf.PNG" alt="Exhibit 3 - HBL SPF" width="850"><br>
   <em>Exhibit 3 — SPF for <code>hbl.com</code>: 13 IPv4 addresses and the Outlook include, ending in <code>-all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/04-hbl-dmarc.PNG" alt="Exhibit 4 - HBL DMARC" width="850"><br>
+  <img src="Screenshots/04-hbl-dmarc.PNG" alt="Exhibit 4 - HBL DMARC" width="850"><br>
   <em>Exhibit 4 — DMARC for <code>hbl.com</code>: <code>p=reject</code>, <code>sp=reject</code>, strict alignment, both report types on</em>
 </p>
 
@@ -281,12 +281,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 3. jazz.com.pk — Pakistani Telecom
 
 <p align="center">
-  <img src="screenshots/05-jazz-spf.PNG" alt="Exhibit 5 - Jazz SPF" width="850"><br>
+  <img src="Screenshots/05-jazz-spf.PNG" alt="Exhibit 5 - Jazz SPF" width="850"><br>
   <em>Exhibit 5 — SPF for <code>jazz.com.pk</code>: 10 IPv4 addresses and the Outlook include, ending in <code>~all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/06-jazz-dmarc.PNG" alt="Exhibit 6 - Jazz DMARC" width="850"><br>
+  <img src="Screenshots/06-jazz-dmarc.PNG" alt="Exhibit 6 - Jazz DMARC" width="850"><br>
   <em>Exhibit 6 — DMARC for <code>jazz.com.pk</code>: <code>p=quarantine</code> with a <code>rua=</code> address</em>
 </p>
 
@@ -305,12 +305,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 4. vu.edu.pk — Pakistani University
 
 <p align="center">
-  <img src="screenshots/07-vu-spf.PNG" alt="Exhibit 7 - VU SPF" width="850"><br>
+  <img src="Screenshots/07-vu-spf.PNG" alt="Exhibit 7 - VU SPF" width="850"><br>
   <em>Exhibit 7 — SPF for <code>vu.edu.pk</code>: Google and Outlook includes, ending in <code>~all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/08-vu-dmarc.PNG" alt="Exhibit 8 - VU DMARC" width="850"><br>
+  <img src="Screenshots/08-vu-dmarc.PNG" alt="Exhibit 8 - VU DMARC" width="850"><br>
   <em>Exhibit 8 — DMARC for <code>vu.edu.pk</code>: <code>p=quarantine</code>, reports to <code>noreply@vu.edu.pk</code></em>
 </p>
 
@@ -329,12 +329,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 5. rextech.pk — Small Lahore Software House
 
 <p align="center">
-  <img src="screenshots/09-rextech-spf.PNG" alt="Exhibit 9 - Rextech SPF" width="850"><br>
+  <img src="Screenshots/09-rextech-spf.PNG" alt="Exhibit 9 - Rextech SPF" width="850"><br>
   <em>Exhibit 9 — SPF for <code>rextech.pk</code>: 13 IPv4 addresses plus <code>a</code> and <code>mx</code>, ending in <code>~all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/10-rextech-dmarc.PNG" alt="Exhibit 10 - Rextech DMARC" width="850"><br>
+  <img src="Screenshots/10-rextech-dmarc.PNG" alt="Exhibit 10 - Rextech DMARC" width="850"><br>
   <em>Exhibit 10 — DMARC for <code>rextech.pk</code>: <code>v=DMARC1; p=none;</code> and nothing else. MxToolbox still shows a green "DNS Record Published"</em>
 </p>
 
@@ -353,12 +353,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 6. petsaaltech.com — Small Lahore Software House
 
 <p align="center">
-  <img src="screenshots/11-petsaal-spf.PNG" alt="Exhibit 11 - Petsaal SPF" width="850"><br>
+  <img src="Screenshots/11-petsaal-spf.PNG" alt="Exhibit 11 - Petsaal SPF" width="850"><br>
   <em>Exhibit 11 — SPF for <code>petsaaltech.com</code>: a shared-hosting include, ending in <code>~all</code>. MxToolbox's syntax checks all pass</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/12-petsaal-dmarc.PNG" alt="Exhibit 12 - Petsaal DMARC" width="850"><br>
+  <img src="Screenshots/12-petsaal-dmarc.PNG" alt="Exhibit 12 - Petsaal DMARC" width="850"><br>
   <em>Exhibit 12 — DMARC for <code>petsaaltech.com</code>: <code>v=DMARC1; p=none;</code></em>
 </p>
 
@@ -377,12 +377,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 7. microsoft.com — Global Tech
 
 <p align="center">
-  <img src="screenshots/13-microsoft-spf.PNG" alt="Exhibit 13 - Microsoft SPF" width="850"><br>
+  <img src="Screenshots/13-microsoft-spf.PNG" alt="Exhibit 13 - Microsoft SPF" width="850"><br>
   <em>Exhibit 13 — SPF for <code>microsoft.com</code>: five separate <code>include:</code> records, ending in <code>-all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/14-microsoft-dmarc.PNG" alt="Exhibit 14 - Microsoft DMARC" width="850"><br>
+  <img src="Screenshots/14-microsoft-dmarc.PNG" alt="Exhibit 14 - Microsoft DMARC" width="850"><br>
   <em>Exhibit 14 — DMARC for <code>microsoft.com</code>: <code>p=reject</code>, <code>pct=100</code>, <code>fo=1</code>, DNS hosted on Azure</em>
 </p>
 
@@ -401,12 +401,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 8. nadra.gov.pk — Pakistani Government
 
 <p align="center">
-  <img src="screenshots/15-nadra-spf.PNG" alt="Exhibit 15 - NADRA SPF" width="850"><br>
+  <img src="Screenshots/15-nadra-spf.PNG" alt="Exhibit 15 - NADRA SPF" width="850"><br>
   <em>Exhibit 15 — SPF for <code>nadra.gov.pk</code>: 25 IPv4 addresses and five <code>a:</code> hosts, no <code>include:</code>, ending in <code>-all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/16-nadra-dmarc.PNG" alt="Exhibit 16 - NADRA DMARC" width="850"><br>
+  <img src="Screenshots/16-nadra-dmarc.PNG" alt="Exhibit 16 - NADRA DMARC" width="850"><br>
   <em>Exhibit 16 — DMARC for <code>nadra.gov.pk</code>: <code>p=reject</code> but <code>sp=none</code>, strict alignment</em>
 </p>
 
@@ -425,12 +425,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 9. telenor.com.pk — Pakistani Telecom
 
 <p align="center">
-  <img src="screenshots/17-telenor-spf.PNG" alt="Exhibit 17 - Telenor SPF" width="850"><br>
+  <img src="Screenshots/17-telenor-spf.PNG" alt="Exhibit 17 - Telenor SPF" width="850"><br>
   <em>Exhibit 17 — SPF for <code>telenor.com.pk</code>: <code>mx</code>, 8 IPv4 addresses and the Outlook include, ending in <code>-all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/18-telenor-dmarc.PNG" alt="Exhibit 18 - Telenor DMARC" width="850"><br>
+  <img src="Screenshots/18-telenor-dmarc.PNG" alt="Exhibit 18 - Telenor DMARC" width="850"><br>
   <em>Exhibit 18 — DMARC for <code>telenor.com.pk</code>: <code>p=quarantine</code>, <code>sp=quarantine</code>, reports through Cloudflare</em>
 </p>
 
@@ -449,12 +449,12 @@ The time and the answering server come from the "Reported by" line on each DMARC
 ### 10. meezanbank.com — Pakistani Bank
 
 <p align="center">
-  <img src="screenshots/19-meezan-spf.PNG" alt="Exhibit 19 - Meezan SPF" width="850"><br>
+  <img src="Screenshots/19-meezan-spf.PNG" alt="Exhibit 19 - Meezan SPF" width="850"><br>
   <em>Exhibit 19 — SPF for <code>meezanbank.com</code>: <code>mx</code> and 8 IPv4 addresses, ending in <code>-all</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/20-meezan-dmarc.PNG" alt="Exhibit 20 - Meezan DMARC" width="850"><br>
+  <img src="Screenshots/20-meezan-dmarc.PNG" alt="Exhibit 20 - Meezan DMARC" width="850"><br>
   <em>Exhibit 20 — DMARC for <code>meezanbank.com</code>: <code>p=reject</code>, <code>sp=reject</code>, <code>pct=100</code></em>
 </p>
 
@@ -619,7 +619,7 @@ For each email: open the message in Gmail, then **⋮ → Show original**. The p
 ### Header 1 — skool.com
 
 <p align="center">
-  <img src="screenshots/header-01-legit.PNG" alt="Exhibit 21 - Skool header" width="850"><br>
+  <img src="Screenshots/header-01-legit.PNG" alt="Exhibit 21 - Skool header" width="850"><br>
   <em>Exhibit 21 — Skool notification email: SPF PASS with IP <code>167.89.88.28</code>, DKIM PASS with <code>skool.com</code>, DMARC PASS</em>
 </p>
 
@@ -632,7 +632,7 @@ For each email: open the message in Gmail, then **⋮ → Show original**. The p
 ### Header 2 — splunk.com
 
 <p align="center">
-  <img src="screenshots/header-02-spam.PNG" alt="Exhibit 22 - Splunk header" width="850"><br>
+  <img src="Screenshots/header-02-spam.PNG" alt="Exhibit 22 - Splunk header" width="850"><br>
   <em>Exhibit 22 — Splunk marketing email: SPF PASS with IP <code>199.15.215.227</code>, DKIM PASS with <code>splunk.com</code>, DMARC PASS</em>
 </p>
 
@@ -650,7 +650,7 @@ The most important finding in the header set, using my note that Gmail filed thi
 ### Header 3 — connect.isc2.org
 
 <p align="center">
-  <img src="screenshots/header-03.PNG" alt="Exhibit 23 - ISC2 header" width="850"><br>
+  <img src="Screenshots/header-03.PNG" alt="Exhibit 23 - ISC2 header" width="850"><br>
   <em>Exhibit 23 — ISC2 email: SPF PASS with IP <code>13.110.211.64</code>, DKIM PASS with <code>connect.isc2.org</code>, DMARC PASS</em>
 </p>
 
@@ -665,7 +665,7 @@ The email took about 15 minutes to arrive. The header does not say why. Slow del
 ### Header 4 — linkedin.com
 
 <p align="center">
-  <img src="screenshots/header-04.PNG" alt="Exhibit 24 - LinkedIn header" width="850"><br>
+  <img src="Screenshots/header-04.PNG" alt="Exhibit 24 - LinkedIn header" width="850"><br>
   <em>Exhibit 24 — LinkedIn newsletter email: SPF PASS with IP <code>108.174.3.195</code>, DKIM PASS with <code>linkedin.com</code>, DMARC PASS</em>
 </p>
 
@@ -819,7 +819,7 @@ These gaps are marked in the project instead of being hidden, so the results sho
 ```text
 email-authentication-audit/
 |-- README.md
-`-- screenshots/
+`-- Screenshots/
     |-- 01-paypal-spf.PNG
     |-- 02-paypal-dmarc.PNG
     |-- 03-hbl-spf.PNG

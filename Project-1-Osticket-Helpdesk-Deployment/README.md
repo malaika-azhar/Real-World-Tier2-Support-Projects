@@ -17,7 +17,7 @@ IT Helpdesk Deployment (osTicket on Azure)
 
 A real IT helpdesk built on a live Azure VM: Ubuntu, Apache, MySQL and PHP installed by hand, osTicket v1.18.1 set up through its web installer, SLA plans and departments configured, and five support tickets run from the customer portal to the agent panel. Every result has a screenshot. Four tickets were closed and one was replied to but left open, and this README says so.
 
-### [📑 Open the visual index](osticket-INDEX.md)
+### [📑 Open the visual index](Osticket-INDEX.md)
 
 </div>
 
@@ -190,7 +190,7 @@ gantt
 Ubuntu Server 24.04 on an Azure for Students subscription, size Standard B4as v2, region India South Central.
 
 <p align="center">
-  <img src="screenshots/01-azure-vm-overview.PNG" alt="Exhibit 1 - Azure VM overview" width="850"><br>
+  <img src="Screenshots/01-azure-vm-overview.PNG" alt="Exhibit 1 - Azure VM overview" width="850"><br>
   <em>Exhibit 1 — <code>osticket-vm</code> Running: Ubuntu 24.04, Standard B4as v2 (4 vCPUs, 16 GiB), India South Central, public IP <code>172.198.77.154</code></em>
 </p>
 
@@ -205,7 +205,7 @@ sudo apt update && sudo apt install apache2 mysql-server php php-mysqli php-gd p
 ```
 
 <p align="center">
-  <img src="screenshots/02-lamp-stack-install.PNG" alt="Exhibit 2 - LAMP install" width="850"><br>
+  <img src="Screenshots/02-lamp-stack-install.PNG" alt="Exhibit 2 - LAMP install" width="850"><br>
   <em>Exhibit 2 — The install command running in the SSH session on <code>osticket-vm</code></em>
 </p>
 
@@ -216,7 +216,7 @@ sudo systemctl status apache2
 ```
 
 <p align="center">
-  <img src="screenshots/03-apache-status.PNG" alt="Exhibit 3 - Apache status" width="850"><br>
+  <img src="Screenshots/03-apache-status.PNG" alt="Exhibit 3 - Apache status" width="850"><br>
   <em>Exhibit 3 — <code>apache2.service</code> is <code>active (running)</code> since 2026-09-14 21:20:44 UTC. The lines above it show an early config-copy attempt that failed because the osTicket files were not copied yet</em>
 </p>
 
@@ -230,7 +230,7 @@ FLUSH PRIVILEGES;
 ```
 
 <p align="center">
-  <img src="screenshots/04-mysql-database-setup.PNG" alt="Exhibit 4 - MySQL setup" width="850"><br>
+  <img src="Screenshots/04-mysql-database-setup.PNG" alt="Exhibit 4 - MySQL setup" width="850"><br>
   <em>Exhibit 4 — MySQL 8.0.46 monitor: all four statements answered <code>Query OK</code></em>
 </p>
 
@@ -251,12 +251,12 @@ unzip osTicket-v1.18.1.zip -d osticket
 ```
 
 <p align="center">
-  <img src="screenshots/05-osticket-download-unzip.PNG" alt="Exhibit 5 - Download and install unzip" width="850"><br>
+  <img src="Screenshots/05-osticket-download-unzip.PNG" alt="Exhibit 5 - Download and install unzip" width="850"><br>
   <em>Exhibit 5 — <code>wget</code> saves <code>osTicket-v1.18.1.zip</code> (51,759,267 bytes) at 21:22:46 UTC, then <code>unzip</code> is installed</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/05-osticket-unzip.PNG" alt="Exhibit 6 - Unzip osTicket" width="850"><br>
+  <img src="Screenshots/05-osticket-unzip.PNG" alt="Exhibit 6 - Unzip osTicket" width="850"><br>
   <em>Exhibit 6 — A second download saved as <code>osTicket-v1.18.1.zip.1</code> (same size, 22:42:12 UTC), then <code>unzip</code> extracts the archive into <code>osticket</code></em>
 </p>
 
@@ -275,33 +275,33 @@ The `chmod 666` is temporary. The installer needs to write the config file, and 
 These commands first appear in the local Windows Command Prompt, where they fail:
 
 <p align="center">
-  <img src="screenshots/07-ssh-cmd-error.PNG" alt="Exhibit 7 - Commands run on the wrong machine" width="850"><br>
+  <img src="Screenshots/07-ssh-cmd-error.PNG" alt="Exhibit 7 - Commands run on the wrong machine" width="850"><br>
   <em>Exhibit 7 — Windows Command Prompt: <code>'ls' is not recognized</code>, <code>'sudo' is not recognized</code>, <code>The system cannot find the path specified</code>. Linux commands do not run on the local PC</em>
 </p>
 
 They work inside the SSH session on the VM:
 
 <p align="center">
-  <img src="screenshots/06-osticket-files-copied.PNG" alt="Exhibit 8 - Files copied on the VM" width="850"><br>
+  <img src="Screenshots/06-osticket-files-copied.PNG" alt="Exhibit 8 - Files copied on the VM" width="850"><br>
   <em>Exhibit 8 — SSH session on <code>osticket-vm</code>: <code>/tmp/osticket</code> holds <code>scripts</code> and <code>upload</code>, the files are copied to <code>/var/www/html</code>, and <code>ost-sampleconfig.php</code> is copied to <code>ost-config.php</code></em>
 </p>
 
 ### Step 8 — Open the web installer and check prerequisites ✅
 
 <p align="center">
-  <img src="screenshots/08-installer-prerequisites.PNG" alt="Exhibit 9 - Installer prerequisites" width="850"><br>
+  <img src="Screenshots/08-installer-prerequisites.PNG" alt="Exhibit 9 - Installer prerequisites" width="850"><br>
   <em>Exhibit 9 — Prerequisites: PHP 8.3.6 ✅, MySQLi ✅, Gdlib, IMAP, XML, XML-DOM, JSON, Mbstring and Phar ✅. Only the optional Intl extension shows a red ❌</em>
 </p>
 
 ### Step 9 — Fill in the install form ✅
 
 <p align="center">
-  <img src="screenshots/09-installer-form-blank.PNG" alt="Exhibit 10 - Blank installer form" width="850"><br>
+  <img src="Screenshots/09-installer-form-blank.PNG" alt="Exhibit 10 - Blank installer form" width="850"><br>
   <em>Exhibit 10 — The blank form. The helpdesk URL is <code>http://172.198.77.154/</code> and the table prefix is prefilled as <code>ost_</code></em>
 </p>
 
 <p align="center">
-  <img src="screenshots/10-installer-form-filled.PNG" alt="Exhibit 11 - Filled installer form" width="850"><br>
+  <img src="Screenshots/10-installer-form-filled.PNG" alt="Exhibit 11 - Filled installer form" width="850"><br>
   <em>Exhibit 11 — The filled form</em>
 </p>
 
@@ -320,19 +320,19 @@ sudo chmod 0644 /var/www/html/include/ost-config.php
 ```
 
 <p align="center">
-  <img src="screenshots/11-installation-complete.PNG" alt="Exhibit 12 - Installation complete" width="850"><br>
+  <img src="Screenshots/11-installation-complete.PNG" alt="Exhibit 12 - Installation complete" width="850"><br>
   <em>Exhibit 12 — "Congratulations!" page. It tells you to remove write access from <code>ost-config.php</code> with <code>chmod 0644</code>. There is no screenshot of running it 📝</em>
 </p>
 
 ### Step 11 — Log in to the Staff Control Panel ✅
 
 <p align="center">
-  <img src="screenshots/13-scp-login.PNG" alt="Exhibit 13 - Staff panel login" width="850"><br>
+  <img src="Screenshots/13-scp-login.PNG" alt="Exhibit 13 - Staff panel login" width="850"><br>
   <em>Exhibit 13 — Staff Control Panel login ("Authentication Required")</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/12-agent-first-login.PNG" alt="Exhibit 14 - First agent login" width="850"><br>
+  <img src="Screenshots/12-agent-first-login.PNG" alt="Exhibit 14 - First agent login" width="850"><br>
   <em>Exhibit 14 — First login at <code>/scp</code>: the only ticket is the system ticket <code>#331925 "osTicket Installed!"</code>, created 09/15/2026 03:58:24 AM</em>
 </p>
 
@@ -367,26 +367,26 @@ flowchart TB
 ### Step 12 — Create the Priority SLA plan ✅
 
 <p align="center">
-  <img src="screenshots/15-sla-priority-add.PNG" alt="Exhibit 15 - Priority SLA" width="850"><br>
+  <img src="Screenshots/15-sla-priority-add.PNG" alt="Exhibit 15 - Priority SLA" width="850"><br>
   <em>Exhibit 15 — New SLA plan "Priority": Active, grace period 4 hours, schedule "System Default"</em>
 </p>
 
 ### Step 13 — Create the Standard SLA plan ✅
 
 <p align="center">
-  <img src="screenshots/14-sla-standard-add.PNG" alt="Exhibit 16 - Standard SLA" width="850"><br>
+  <img src="Screenshots/14-sla-standard-add.PNG" alt="Exhibit 16 - Standard SLA" width="850"><br>
   <em>Exhibit 16 — New SLA plan "Standard": Active, grace period 24 hours, schedule "System Default"</em>
 </p>
 
 ### Step 14 — Check the SLA list ✅
 
 <p align="center">
-  <img src="screenshots/16-sla-final-list.PNG" alt="Exhibit 17 - SLA list" width="850"><br>
+  <img src="Screenshots/16-sla-final-list.PNG" alt="Exhibit 17 - SLA list" width="850"><br>
   <em>Exhibit 17 — Three plans after adding them. The yellow banner still says to delete the <code>setup</code> directory</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/16b-sla-final-list-alt.PNG" alt="Exhibit 18 - SLA list without banners" width="850"><br>
+  <img src="Screenshots/16b-sla-final-list-alt.PNG" alt="Exhibit 18 - SLA list without banners" width="850"><br>
   <em>Exhibit 18 — The same list in a later screenshot. Neither banner is shown</em>
 </p>
 
@@ -401,12 +401,12 @@ The "delete the setup directory" warning is visible in Exhibits 15 to 17 and gon
 ### Step 15 — Add three custom departments ✅
 
 <p align="center">
-  <img src="screenshots/17-departments-before.PNG" alt="Exhibit 19 - Departments before" width="850"><br>
+  <img src="Screenshots/17-departments-before.PNG" alt="Exhibit 19 - Departments before" width="850"><br>
   <em>Exhibit 19 — Before: three departments from the install (Maintenance, Sales, and Support as the default)</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/18-departments-final.PNG" alt="Exhibit 20 - Departments after" width="850"><br>
+  <img src="Screenshots/18-departments-final.PNG" alt="Exhibit 20 - Departments after" width="850"><br>
   <em>Exhibit 20 — After: <code>Email/ VPN</code>, <code>IT</code> and <code>Network</code> added ("Successfully added Email/ VPN")</em>
 </p>
 
@@ -422,7 +422,7 @@ The "delete the setup directory" warning is visible in Exhibits 15 to 17 and gon
 ### Step 16 — Review the help topics ✅
 
 <p align="center">
-  <img src="screenshots/19-help-topics.PNG" alt="Exhibit 21 - Help topics" width="850"><br>
+  <img src="Screenshots/19-help-topics.PNG" alt="Exhibit 21 - Help topics" width="850"><br>
   <em>Exhibit 21 — Help topics decide the department and priority of a new ticket</em>
 </p>
 
@@ -561,12 +561,12 @@ Priority and department come from the help topic the customer picks (Exhibit 21)
 ### Ticket Simulation 1: WiFi Connectivity Issue
 
 <p align="center">
-  <img src="screenshots/20-ticket1-wifi.PNG" alt="Exhibit 22 - WiFi ticket form" width="850"><br>
+  <img src="Screenshots/20-ticket1-wifi.PNG" alt="Exhibit 22 - WiFi ticket form" width="850"><br>
   <em>Exhibit 22 — Customer form: Ali Raza, help topic "Report a Problem / Access Issue", summary "WiFi not connecting"</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/26-wifi-reply.PNG" alt="Exhibit 23 - WiFi ticket reply" width="850"><br>
+  <img src="Screenshots/26-wifi-reply.PNG" alt="Exhibit 23 - WiFi ticket reply" width="850"><br>
   <em>Exhibit 23 — Agent reply being written on ticket #693589, sent from <code>Support</code> to the customer</em>
 </p>
 
@@ -602,12 +602,12 @@ Customer reports issue → Restart router → Re-check WiFi password → Ticket 
 ### Ticket Simulation 2: Email Not Receiving
 
 <p align="center">
-  <img src="screenshots/21-ticket2-email.PNG" alt="Exhibit 24 - Email ticket form" width="850"><br>
+  <img src="Screenshots/21-ticket2-email.PNG" alt="Exhibit 24 - Email ticket form" width="850"><br>
   <em>Exhibit 24 — Customer form: Sara Khan, help topic "Report a Problem / Access Issue", summary "Email not receiving"</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/28-email-resolve.PNG" alt="Exhibit 25 - Email ticket reply" width="850"><br>
+  <img src="Screenshots/28-email-resolve.PNG" alt="Exhibit 25 - Email ticket reply" width="850"><br>
   <em>Exhibit 25 — Ticket #196889 after the reply: Priority High, Department Support, SLA plan Default SLA, due 09/17/2026 08:00 AM</em>
 </p>
 
@@ -639,12 +639,12 @@ Customer reports issue → Restart router → Re-check WiFi password → Ticket 
 ### Ticket Simulation 3: VPN Connection Failing
 
 <p align="center">
-  <img src="screenshots/22-ticket3-vpn.PNG" alt="Exhibit 26 - VPN ticket form" width="850"><br>
+  <img src="Screenshots/22-ticket3-vpn.PNG" alt="Exhibit 26 - VPN ticket form" width="850"><br>
   <em>Exhibit 26 — Customer form: Hamza Tariq, help topic "Report a Problem", summary "VPN connection failing"</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/29-vpn-resolve.PNG" alt="Exhibit 27 - VPN ticket reply" width="850"><br>
+  <img src="Screenshots/29-vpn-resolve.PNG" alt="Exhibit 27 - VPN ticket reply" width="850"><br>
   <em>Exhibit 27 — Ticket #505400 after the reply: Priority Normal, Department <b>Maintenance</b>, SLA plan Default SLA</em>
 </p>
 
@@ -682,12 +682,12 @@ Customer reports timeout → Suspect clock or certificate → Advise automatic c
 ### Ticket Simulation 4: Forgot Password
 
 <p align="center">
-  <img src="screenshots/23-ticket4-password.PNG" alt="Exhibit 28 - Password ticket form" width="850"><br>
+  <img src="Screenshots/23-ticket4-password.PNG" alt="Exhibit 28 - Password ticket form" width="850"><br>
   <em>Exhibit 28 — Customer form: Ayesha Malik, help topic "General Inquiry", summary "Forgot password"</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/30-password-resolve.PNG" alt="Exhibit 29 - Password ticket reply" width="850"><br>
+  <img src="Screenshots/30-password-resolve.PNG" alt="Exhibit 29 - Password ticket reply" width="850"><br>
   <em>Exhibit 29 — Ticket #894015 after the reply: <b>Status Open</b>, Priority Normal, Department Support, SLA plan Default SLA</em>
 </p>
 
@@ -726,12 +726,12 @@ Customer reports failed reset link → Send new reset link manually → Wait for
 ### Ticket Simulation 5: Printer Not Working
 
 <p align="center">
-  <img src="screenshots/24-ticket5-printer.PNG" alt="Exhibit 30 - Printer ticket form" width="850"><br>
+  <img src="Screenshots/24-ticket5-printer.PNG" alt="Exhibit 30 - Printer ticket form" width="850"><br>
   <em>Exhibit 30 — Customer form: Bilal Ahmed, help topic "Report a Problem / Access Issue", summary "Printer not working"</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/27-printer-resolve.PNG" alt="Exhibit 31 - Printer ticket reply" width="850"><br>
+  <img src="Screenshots/27-printer-resolve.PNG" alt="Exhibit 31 - Printer ticket reply" width="850"><br>
   <em>Exhibit 31 — Ticket #738368 after the reply: Priority High, Department Support, SLA plan Default SLA</em>
 </p>
 
@@ -776,12 +776,12 @@ Customer reports error light → Check paper, toner and cables → Restart print
 ## 📈 Ticket Summary
 
 <p align="center">
-  <img src="screenshots/25-all-open-tickets.PNG" alt="Exhibit 32 - Open tickets" width="850"><br>
+  <img src="Screenshots/25-all-open-tickets.PNG" alt="Exhibit 32 - Open tickets" width="850"><br>
   <em>Exhibit 32 — Open queue with all five tickets, plus the system ticket <code>#331925</code>: "Showing 1 - 6 of about 6"</em>
 </p>
 
 <p align="center">
-  <img src="screenshots/31-closed-tickets.PNG" alt="Exhibit 33 - Closed tickets" width="850"><br>
+  <img src="Screenshots/31-closed-tickets.PNG" alt="Exhibit 33 - Closed tickets" width="850"><br>
   <em>Exhibit 33 — Closed list: four tickets closed by Malaika Azhar. The password ticket <code>#894015</code> is not in it</em>
 </p>
 
@@ -933,8 +933,8 @@ These gaps are marked in the project instead of being hidden, so the results sho
 ```text
 osticket-tier2-project/
 |-- README.md
-|-- osticket-INDEX.md
-`-- screenshots/
+|-- Osticket-INDEX.md
+`-- Screenshots/
     |-- 01-azure-vm-overview.PNG
     |-- 02-lamp-stack-install.PNG
     |-- 03-apache-status.PNG

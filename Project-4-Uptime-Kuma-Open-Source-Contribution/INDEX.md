@@ -65,13 +65,13 @@ Exhibits 1 to 5.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex1"></a>
-<a href="screenshots/01_issue_page_opened.PNG"><img src="screenshots/01_issue_page_opened.PNG" width="380" alt="Exhibit 1"></a>
+<a href="Screenshots/01_issue_page_opened.PNG"><img src="Screenshots/01_issue_page_opened.PNG" width="380" alt="Exhibit 1"></a>
 <br><b>Exhibit 1 — Issue #7062 opened</b>
 <br><sub>"Allow a monitor to be dragged on top of the hierarchy," labeled <code>help wanted</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex2"></a>
-<a href="screenshots/02_comment_posted.PNG"><img src="screenshots/02_comment_posted.PNG" width="380" alt="Exhibit 2"></a>
+<a href="Screenshots/02_comment_posted.PNG"><img src="Screenshots/02_comment_posted.PNG" width="380" alt="Exhibit 2"></a>
 <br><b>Exhibit 2 — Assignment requested</b>
 <br><sub>"I'd like to work on this, can I be assigned?"</sub>
 </td>
@@ -79,13 +79,13 @@ Exhibits 1 to 5.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex3"></a>
-<a href="screenshots/03_forked_repo.PNG"><img src="screenshots/03_forked_repo.PNG" width="380" alt="Exhibit 3"></a>
+<a href="Screenshots/03_forked_repo.PNG"><img src="Screenshots/03_forked_repo.PNG" width="380" alt="Exhibit 3"></a>
 <br><b>Exhibit 3 — Repository forked</b>
 <br><sub><code>malaika-azhar/uptime-kuma</code>, up to date with upstream</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex4"></a>
-<a href="screenshots/04_git_clone_terminal.PNG"><img src="screenshots/04_git_clone_terminal.PNG" width="380" alt="Exhibit 4"></a>
+<a href="Screenshots/04_git_clone_terminal.PNG"><img src="Screenshots/04_git_clone_terminal.PNG" width="380" alt="Exhibit 4"></a>
 <br><b>Exhibit 4 — <code>git clone</code></b>
 <br><sub>Cloned locally in Git Bash, 43,739 objects received</sub>
 </td>
@@ -93,7 +93,7 @@ Exhibits 1 to 5.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex5"></a>
-<a href="screenshots/05_contributing_md_read.PNG"><img src="screenshots/05_contributing_md_read.PNG" width="380" alt="Exhibit 5"></a>
+<a href="Screenshots/05_contributing_md_read.PNG"><img src="Screenshots/05_contributing_md_read.PNG" width="380" alt="Exhibit 5"></a>
 <br><b>Exhibit 5 — <code>CONTRIBUTING.md</code> read</b>
 <br><sub>Project info and directory structure reviewed first</sub>
 </td>
@@ -111,13 +111,13 @@ Exhibits 6 to 11.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex6"></a>
-<a href="screenshots/06_node_version_and_setup.PNG"><img src="screenshots/06_node_version_and_setup.PNG" width="380" alt="Exhibit 6"></a>
+<a href="Screenshots/06_node_version_and_setup.PNG"><img src="Screenshots/06_node_version_and_setup.PNG" width="380" alt="Exhibit 6"></a>
 <br><b>Exhibit 6 — Setup attempt fails</b>
 <br><sub><code>npm run setup</code> hit a bad version pathspec; Node confirmed as <code>v24.14.1</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex7"></a>
-<a href="screenshots/07_npm_setup_complete.PNG"><img src="screenshots/07_npm_setup_complete.PNG" width="380" alt="Exhibit 7"></a>
+<a href="Screenshots/07_npm_setup_complete.PNG"><img src="Screenshots/07_npm_setup_complete.PNG" width="380" alt="Exhibit 7"></a>
 <br><b>Exhibit 7 — <code>npm ci --omit dev</code></b>
 <br><sub>597 packages added, EBADENGINE warnings noted</sub>
 </td>
@@ -125,13 +125,13 @@ Exhibits 6 to 11.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex8"></a>
-<a href="screenshots/08_dev_server_running.PNG"><img src="screenshots/08_dev_server_running.PNG" width="380" alt="Exhibit 8"></a>
+<a href="Screenshots/08_dev_server_running.PNG"><img src="Screenshots/08_dev_server_running.PNG" width="380" alt="Exhibit 8"></a>
 <br><b>Exhibit 8 — Dev server fails</b>
 <br><sub><code>'concurrently' is not recognized</code> — dev deps were skipped</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex9"></a>
-<a href="screenshots/09_npm_install_and_dev_server.PNG"><img src="screenshots/09_npm_install_and_dev_server.PNG" width="380" alt="Exhibit 9"></a>
+<a href="Screenshots/09_npm_install_and_dev_server.PNG"><img src="Screenshots/09_npm_install_and_dev_server.PNG" width="380" alt="Exhibit 9"></a>
 <br><b>Exhibit 9 — Full reinstall</b>
 <br><sub><code>npm install</code> without <code>--omit dev</code>, 633 packages</sub>
 </td>
@@ -139,13 +139,13 @@ Exhibits 6 to 11.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex10"></a>
-<a href="screenshots/10_npm_install_output.PNG"><img src="screenshots/10_npm_install_output.PNG" width="380" alt="Exhibit 10"></a>
+<a href="Screenshots/10_npm_install_output.PNG"><img src="Screenshots/10_npm_install_output.PNG" width="380" alt="Exhibit 10"></a>
 <br><b>Exhibit 10 — Dev server succeeds</b>
 <br><sub>Vite on <code>localhost:3000</code>, backend listening on <code>:3001</code></sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex11"></a>
-<a href="screenshots/11_local_run_success.PNG"><img src="screenshots/11_local_run_success.PNG" width="380" alt="Exhibit 11"></a>
+<a href="Screenshots/11_local_run_success.PNG"><img src="Screenshots/11_local_run_success.PNG" width="380" alt="Exhibit 11"></a>
 <br><b>Exhibit 11 — Dashboard live</b>
 <br><sub>First-time setup finished, empty dashboard reached</sub>
 </td>
@@ -162,13 +162,13 @@ Exhibits 12 to 15.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex12"></a>
-<a href="screenshots/12_three_monitors_created.PNG"><img src="screenshots/12_three_monitors_created.PNG" width="380" alt="Exhibit 12"></a>
+<a href="Screenshots/12_three_monitors_created.PNG"><img src="Screenshots/12_three_monitors_created.PNG" width="380" alt="Exhibit 12"></a>
 <br><b>Exhibit 12 — Test monitors created</b>
 <br><sub>Cloudflare, GitHub, and Google test monitors, all Up</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex13"></a>
-<a href="screenshots/13_group_monitor_created.PNG"><img src="screenshots/13_group_monitor_created.PNG" width="380" alt="Exhibit 13"></a>
+<a href="Screenshots/13_group_monitor_created.PNG"><img src="Screenshots/13_group_monitor_created.PNG" width="380" alt="Exhibit 13"></a>
 <br><b>Exhibit 13 — Group monitor created</b>
 <br><sub>"Test Group" added as a Group-type monitor</sub>
 </td>
@@ -176,13 +176,13 @@ Exhibits 12 to 15.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex14"></a>
-<a href="screenshots/14_monitors_auto_nested_in_group.PNG"><img src="screenshots/14_monitors_auto_nested_in_group.PNG" width="380" alt="Exhibit 14"></a>
+<a href="Screenshots/14_monitors_auto_nested_in_group.PNG"><img src="Screenshots/14_monitors_auto_nested_in_group.PNG" width="380" alt="Exhibit 14"></a>
 <br><b>Exhibit 14 — Monitors nested</b>
 <br><sub>Confirmed via the "Monitor Group" field on the edit page</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex15"></a>
-<a href="screenshots/15_dashboard_overview_events.PNG"><img src="screenshots/15_dashboard_overview_events.PNG" width="380" alt="Exhibit 15"></a>
+<a href="Screenshots/15_dashboard_overview_events.PNG"><img src="Screenshots/15_dashboard_overview_events.PNG" width="380" alt="Exhibit 15"></a>
 <br><b>Exhibit 15 — Event history</b>
 <br><sub>Live dashboard events while the group was being tested</sub>
 </td>
@@ -199,13 +199,13 @@ Exhibits 16 to 20.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex16"></a>
-<a href="screenshots/16_monitorlist_vue_source_code.PNG"><img src="screenshots/16_monitorlist_vue_source_code.PNG" width="380" alt="Exhibit 16"></a>
+<a href="Screenshots/16_monitorlist_vue_source_code.PNG"><img src="Screenshots/16_monitorlist_vue_source_code.PNG" width="380" alt="Exhibit 16"></a>
 <br><b>Exhibit 16 — <code>MonitorList.vue</code> read</b>
 <br><sub>Renders the top-level list; the drag handler lives elsewhere</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex17"></a>
-<a href="screenshots/17_git_diff_pr_comparison.PNG"><img src="screenshots/17_git_diff_pr_comparison.PNG" width="380" alt="Exhibit 17"></a>
+<a href="Screenshots/17_git_diff_pr_comparison.PNG"><img src="Screenshots/17_git_diff_pr_comparison.PNG" width="380" alt="Exhibit 17"></a>
 <br><b>Exhibit 17 — The fix, as a diff</b>
 <br><sub>14 lines added, 7 removed, confined to <code>onDrop</code></sub>
 </td>
@@ -213,13 +213,13 @@ Exhibits 16 to 20.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex18"></a>
-<a href="screenshots/18_pr_opened_successfully.PNG"><img src="screenshots/18_pr_opened_successfully.PNG" width="380" alt="Exhibit 18"></a>
+<a href="Screenshots/18_pr_opened_successfully.PNG"><img src="Screenshots/18_pr_opened_successfully.PNG" width="380" alt="Exhibit 18"></a>
 <br><b>Exhibit 18 — PR #7882 opened</b>
 <br><sub>Correct template followed; status Open</sub>
 </td>
 <td align="center" valign="top" width="50%">
 <a id="ex19"></a>
-<a href="screenshots/19_checks_passed_maintainer_interaction.PNG"><img src="screenshots/19_checks_passed_maintainer_interaction.PNG" width="380" alt="Exhibit 19"></a>
+<a href="Screenshots/19_checks_passed_maintainer_interaction.PNG"><img src="Screenshots/19_checks_passed_maintainer_interaction.PNG" width="380" alt="Exhibit 19"></a>
 <br><b>Exhibit 19 — Checks passed</b>
 <br><sub>18 successful checks; maintainer edited the PR title</sub>
 </td>
@@ -227,7 +227,7 @@ Exhibits 16 to 20.
 <tr>
 <td align="center" valign="top" width="50%">
 <a id="ex20"></a>
-<a href="screenshots/20_final_status_awaiting_review.PNG"><img src="screenshots/20_final_status_awaiting_review.PNG" width="380" alt="Exhibit 20"></a>
+<a href="Screenshots/20_final_status_awaiting_review.PNG"><img src="Screenshots/20_final_status_awaiting_review.PNG" width="380" alt="Exhibit 20"></a>
 <br><b>Exhibit 20 — Current status</b>
 <br><sub>Open, mergeable, no conflicts, awaiting formal review</sub>
 </td>
