@@ -133,6 +133,22 @@ Tier-2 support works inside a ticketing system: customers report problems, agent
 > [!IMPORTANT]
 > Azure and the server show UTC. The osTicket agent panel shows times 5 hours ahead of UTC (the default SLA is stamped 22:58:19 on the server and 03:58:19 AM in the panel). All times in the ticket sections use the agent-panel time.
 
+### 🗺️ Lab Architecture
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+flowchart LR
+    C["🌐 Customer<br/>/open.php"]:::c1 --> VM["☁️ osticket-vm<br/>Apache + PHP<br/>172.198.77.154"]:::c2
+    A["🎧 Agent<br/>/scp"]:::c3 --> VM
+    VM --> DB["🗄️ MySQL<br/>database osticket"]:::c4
+    classDef c1 fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef c2 fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef c3 fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef c4 fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
+```
+<p align="center"><em>Addresses and paths come from the Environment table. The diagram shows the layout, it is not a screenshot.</em></p>
+
 ---
 
 <a id="project-flow"></a>
@@ -320,6 +336,27 @@ sudo chmod 0644 /var/www/html/include/ost-config.php
   <em>Exhibit 14 — First login at <code>/scp</code>: the only ticket is the system ticket <code>#331925 "osTicket Installed!"</code>, created 09/15/2026 03:58:24 AM</em>
 </p>
 
+### 🗺️ Why the Install Order Matters
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+flowchart TB
+    F["📂 Copy osTicket files<br/>to /var/www/html"]:::start --> Q{"Files in place?"}:::q
+    Q -->|no| E["❌ cannot stat<br/>ost-sampleconfig.php<br/>Exhibit 3"]:::bad
+    Q -->|yes| C["📄 Create ost-config.php<br/>from the sample<br/>Exhibit 8"]:::seen
+    C --> W["🔓 chmod 666, temporary 📝"]:::unseen
+    W --> I["🧭 Run the web installer<br/>Exhibits 9 to 12"]:::seen
+    I --> L["🔒 chmod 0644 📝"]:::unseen
+    L --> S["🔑 Log in at /scp<br/>Exhibits 13 and 14"]:::seen
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef unseen fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    linkStyle default stroke:#2C3E50,stroke-width:2px
+```
+<p align="center"><em>Green is shown in a screenshot. Dashed steps come from my notes 📝. The red box is the early error from Exhibit 3, before the files were copied.</em></p>
+
 ---
 
 <a id="module-3"></a>
@@ -403,24 +440,25 @@ The four topics were created at install time (03:58:20 AM). None of them points 
 How a customer's choice becomes a department:
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart LR
-    P["🌐 Customer portal<br/>/open.php"]:::portal --> HT1["Feedback<br/>Low"]:::topic
+    P["🌐 Portal<br/>/open.php"]:::portal --> HT1["Feedback<br/>Low"]:::topic
     P --> HT2["General Inquiry<br/>Normal"]:::topic
     P --> HT3["Report a Problem<br/>Normal"]:::topic
-    P --> HT4["Report a Problem / Access Issue<br/>High"]:::topic
+    P --> HT4["Problem / Access Issue<br/>High"]:::topic
     HT1 --> D1["Support (default)"]:::dept
     HT2 --> D1
     HT4 --> D1
     HT3 --> D2["Maintenance"]:::dept
-    D1 --> SLA["Default SLA - 18 h<br/>on every ticket page shown"]:::sla
+    D1 --> SLA["Default SLA<br/>18 h"]:::sla
     D2 --> SLA
-    NEW["IT · Network · Email/ VPN<br/>created, but no help topic routes here"]:::unused
-
+    NEW["IT, Network, Email/ VPN<br/>no help topic routes here"]:::unused
     classDef portal fill:#E7F0F7,stroke:#1D5B8F,color:#1D5B8F
     classDef topic fill:#FBF0DC,stroke:#9C6B0B,color:#9C6B0B
     classDef dept fill:#E4F3EE,stroke:#0F6E56,color:#0F6E56
     classDef sla fill:#ECEAFA,stroke:#4A3FA6,color:#4A3FA6
-    classDef unused fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    classDef unused fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 4 3
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 
 ---
@@ -438,6 +476,26 @@ flowchart LR
 | Tickets | 4 of 5 closed | One ticket replied to and left open |
 | Email delivery | Not tested | No screenshot shows mail leaving or arriving |
 
+### 🧾 What the Evidence Proves
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+flowchart LR
+    S["☁️ Server"]:::c1 --> S1["✅ Proven<br/>VM running, Apache active"]:::ok
+    H["🎫 Helpdesk"]:::c2 --> H1["✅ Proven<br/>osTicket installed, 5 tickets"]:::ok
+    P["⏱️ SLA plans"]:::c3 --> P1["✅ Proven<br/>3 plans created"]:::ok
+    P --> P2["❌ Not shown<br/>Priority or Standard on a ticket"]:::bad
+    D["🏢 Departments"]:::c4 --> D1["❌ Not proven<br/>no help topic routes to them"]:::bad
+    M["📧 Email delivery"]:::c1 --> M1["❌ Not tested"]:::bad
+    classDef c1 fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef c2 fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef c3 fill:#76448A,stroke:#432752,stroke-width:2px,color:#FFFFFF
+    classDef c4 fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
+```
+
 ---
 
 <a id="ticket-lifecycle"></a>
@@ -446,28 +504,20 @@ flowchart LR
 How a customer problem becomes a closed ticket
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
 flowchart TB
-    Sub["🌐 CUSTOMER SUBMITS ON /open.php"]:::subClass
-    Topic["🏷️ HELP TOPIC SETS DEPARTMENT AND PRIORITY"]:::topicClass
-    Tick["🎫 TICKET CREATED"]:::tickClass
-    Rep["💬 AGENT REPLIES WITH CHECKS"]:::repClass
-    Conf["❓ CUSTOMER CONFIRMS THE FIX?"]:::confClass
-    Close["✅ CLOSE THE TICKET"]:::closeClass
-    Open["🟡 LEAVE OPEN AND FOLLOW UP"]:::openClass
-
-    Sub --> Topic --> Tick --> Rep --> Conf
-    Conf -->|YES| Close
-    Conf -->|NO| Open
-
-    classDef subClass fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef topicClass fill:#1A5276,stroke:#0B2E43,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef tickClass fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef repClass fill:#B9770E,stroke:#6E4409,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef confClass fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef closeClass fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
-    classDef openClass fill:#943126,stroke:#571C16,stroke-width:4px,color:#FFFFFF,font-weight:bold
-
-    linkStyle default stroke:#2C3E50,stroke-width:3px
+    Sub["🌐 Customer submits<br/>on /open.php"]:::lsub --> Topic["🏷️ Help topic sets<br/>department and priority"]:::ltopic
+    Topic --> Tick["🎫 Ticket created"]:::ltick --> Rep["💬 Agent replies<br/>with checks"]:::lrep --> Conf{"Customer confirms<br/>the fix?"}:::lconf
+    Conf -->|yes| Close["✅ Close the ticket"]:::lclose
+    Conf -->|no| Open["🟡 Leave open,<br/>follow up"]:::lopen
+    classDef lsub fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef ltopic fill:#1A5276,stroke:#0B2E43,stroke-width:2px,color:#FFFFFF
+    classDef ltick fill:#117864,stroke:#083D33,stroke-width:2px,color:#FFFFFF
+    classDef lrep fill:#B9770E,stroke:#6E4409,stroke-width:2px,color:#FFFFFF
+    classDef lconf fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    classDef lclose fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef lopen fill:#943126,stroke:#571C16,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
 ```
 
 In this lab there was no real customer, so no ticket reached the "customer confirms" step. Four were closed by me and one was left open.
@@ -744,6 +794,20 @@ Customer reports error light → Check paper, toner and cables → Restart print
 | #738368 Printer not working | Bilal Ahmed | 🔴 High | Support | 6 min 47 s | ✅ Closed | 9 min 0 s |
 
 The times include the minutes I spent writing each reply, so they show how the lab ran, not real-world response speed.
+
+### 🗺️ How the Five Tickets Ended
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+flowchart LR
+    T["🎫 5 tickets"]:::start --> C["✅ 4 closed by me<br/>WiFi, Email, VPN, Printer"]:::seen
+    T --> O["🟠 1 still open<br/>Forgot password<br/>waits for the customer"]:::warn
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:2px,color:#FFFFFF
+    classDef seen fill:#1E8449,stroke:#0E4A28,stroke-width:2px,color:#FFFFFF
+    classDef warn fill:#B7950B,stroke:#6B5807,stroke-width:2px,color:#FFFFFF
+    linkStyle default stroke:#2C3E50,stroke-width:2px
+```
+<p align="center"><em>From Exhibits 32 and 33. The "customer" was me, so no ticket was confirmed by a real customer.</em></p>
 
 ---
 
