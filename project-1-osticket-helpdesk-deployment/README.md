@@ -136,7 +136,7 @@ Tier-2 support works inside a ticketing system: customers report problems, agent
 ### 🗺️ Lab Architecture
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     C["🌐 Customer<br/>/open.php"]:::c1 --> VM["☁️ osticket-vm<br/>Apache + PHP<br/>172.198.77.154"]:::c2
     A["🎧 Agent<br/>/scp"]:::c3 --> VM
@@ -339,7 +339,7 @@ sudo chmod 0644 /var/www/html/include/ost-config.php
 ### 🗺️ Why the Install Order Matters
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     F["📂 Copy osTicket files<br/>to /var/www/html"]:::start --> Q{"Files in place?"}:::q
     Q -->|no| E["❌ cannot stat<br/>ost-sampleconfig.php<br/>Exhibit 3"]:::bad
@@ -440,7 +440,7 @@ The four topics were created at install time (03:58:20 AM). None of them points 
 How a customer's choice becomes a department:
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     P["🌐 Portal<br/>/open.php"]:::portal --> HT1["Feedback<br/>Low"]:::topic
     P --> HT2["General Inquiry<br/>Normal"]:::topic
@@ -479,7 +479,7 @@ flowchart LR
 ### 🧾 What the Evidence Proves
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     S["☁️ Server"]:::c1 --> S1["✅ Proven<br/>VM running, Apache active"]:::ok
     H["🎫 Helpdesk"]:::c2 --> H1["✅ Proven<br/>osTicket installed, 5 tickets"]:::ok
@@ -504,7 +504,7 @@ flowchart LR
 How a customer problem becomes a closed ticket
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart TB
     Sub["🌐 Customer submits<br/>on /open.php"]:::lsub --> Topic["🏷️ Help topic sets<br/>department and priority"]:::ltopic
     Topic --> Tick["🎫 Ticket created"]:::ltick --> Rep["💬 Agent replies<br/>with checks"]:::lrep --> Conf{"Customer confirms<br/>the fix?"}:::lconf
@@ -798,7 +798,7 @@ The times include the minutes I spent writing each reply, so they show how the l
 ### 🗺️ How the Five Tickets Ended
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '12px'}, 'flowchart': {'nodeSpacing': 18, 'rankSpacing': 26, 'padding': 6}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'fontSize': '14px'}, 'flowchart': {'nodeSpacing': 24, 'rankSpacing': 34, 'padding': 8}}}%%
 flowchart LR
     T["🎫 5 tickets"]:::start --> C["✅ 4 closed by me<br/>WiFi, Email, VPN, Printer"]:::seen
     T --> O["🟠 1 still open<br/>Forgot password<br/>waits for the customer"]:::warn
