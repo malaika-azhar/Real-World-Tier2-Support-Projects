@@ -157,7 +157,7 @@ flowchart LR
   'sectionBkgColor':'#D6DBDF', 'altSectionBkgColor':'#EAECEE',
   'taskTextColor':'#FFFFFF', 'taskTextOutsideColor':'#1B2631',
   'taskTextLightColor':'#FFFFFF',
-  'titleColor':'#1B2A4A', 'fontSize':'18px'
+  'titleColor':'#1B2A4A', 'fontSize':'16px'
 }}}%%
 gantt
     title Project Flow — Capture Setup to Three Case Studies
