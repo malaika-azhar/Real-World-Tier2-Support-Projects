@@ -403,6 +403,22 @@ async onDrop(event) {
 
 Every monitor stores a `parent` field: the ID of the group it belongs to, or `null` if it is top-level. Dropping a monitor on a group set that field correctly. But `onDrop` returned at once whenever the target was not a group, so a drop on a normal monitor, or outside a group, did nothing. No code path ever set `parent` back to `null`.
 
+```mermaid
+flowchart TB
+    D["🖱️ MONITOR DROPPED ON A TARGET<br/>onDrop runs"]:::start --> Q{"❓ TARGET IS<br/>A GROUP?"}:::q
+    Q -->|YES| Y["✅ parent = group ID<br/>monitor nests inside"]:::ok
+    Q -->|NO| N["❌ early return<br/>nothing happens"]:::bad
+    N -.-> X["No code path ever sets<br/>parent back to null"]:::note
+
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef bad fill:#943126,stroke:#571C16,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef note fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E50,stroke-width:3px
+```
+<p align="center"><em>Before the fix. Only the "group" branch ever changed the parent. This diagram shows the logic, it is not a screenshot.</em></p>
+
 🎯 **Result:** The cause was found in the code: one guard clause that returns early for every non-group target.
 
 | Field | Value |
@@ -439,6 +455,23 @@ const newParent = this.monitor.type === "group" ? this.monitor.id : null;
 - **Drop on a group:** behaves as before, the monitor nests inside it.
 - **Drop on anything else:** `parent` is set to `null`, so the monitor moves to the top level.
 - **Everything else** in the method, meaning the optimistic UI update, the socket call that saves the change and the rollback on error, was left untouched.
+
+```mermaid
+flowchart TB
+    D["🖱️ MONITOR DROPPED ON A TARGET<br/>onDrop runs"]:::start --> Q{"❓ TARGET IS<br/>A GROUP?"}:::q
+    Q -->|YES| Y["✅ newParent = group ID<br/>nests inside, as before"]:::ok
+    Q -->|NO| N["🆕 newParent = null<br/>moves to the top level"]:::new
+    Y --> R["💾 UI update, socket save, rollback on error<br/>left untouched"]:::same
+    N --> R
+
+    classDef start fill:#2C3E70,stroke:#131B3A,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef q fill:#B7950B,stroke:#6B5807,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef ok fill:#1E8449,stroke:#0E4A28,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef new fill:#117864,stroke:#083D33,stroke-width:4px,color:#FFFFFF,font-weight:bold
+    classDef same fill:#EAECEE,stroke:#707B7C,color:#3B4142,stroke-dasharray: 5 5
+    linkStyle default stroke:#2C3E50,stroke-width:3px
+```
+<p align="center"><em>After the fix. Both branches end in a valid parent value and the rest of the method is unchanged. This diagram shows the logic, it is not a screenshot.</em></p>
 
 <p align="center">
   <img src="screenshots/17_git_diff_pr_comparison.PNG" alt="Exhibit 17 - Git diff" width="850"><br>
@@ -645,7 +678,7 @@ flowchart TB
 - **No automated test added:** The fix was checked by reading the code and by running the app, not by a new unit or end-to-end test, because the component had no existing coverage.
 - **Unsupported Node.js version:** Node.js v24.14.1 is below the requested version, and the app still ran.
 - **AI-assisted, human-reviewed:** Investigation and drafting used AI assistance, disclosed in the pull request as the project's policy asks. The change was reviewed and understood before it was sent.
-- **Diagrams are illustrative:** The remaining flowcharts show the overall project stages and the pull request path. The screenshots and the pull request itself are the evidence.
+- **Diagrams are illustrative:** The flowcharts show the logic of `onDrop` and the path the pull request took. The screenshots and the pull request itself are the evidence.
 - **Lab size:** One Windows PC with local dev servers, and one fork.
 
 These gaps are marked in the project instead of being hidden, so the results show what was actually proven.
