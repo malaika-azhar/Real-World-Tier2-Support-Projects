@@ -108,60 +108,126 @@ flowchart TB
 <a id="project-01"></a>
 ## 🎫 Project 01 — Real Ticketing System Deployment
 
+<div align="center">
+
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu_24.04-E95420?style=flat-square&logo=ubuntu&logoColor=white)
+![Apache](https://img.shields.io/badge/Apache-D22128?style=flat-square&logo=apache&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![osTicket](https://img.shields.io/badge/osTicket_v1.18.1-F4740E?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=flat-square)
+
+</div>
+
 **Goal:** Stand up a real helpdesk on a live Azure VM, then run it the way a support team would.
 
-| Item | Value |
-|---|---|
-| Environment | Azure VM, Ubuntu 24.04, Apache, MySQL, PHP, osTicket v1.18.1 |
-| Work performed | LAMP stack install → osTicket web installer → SLA plans & departments → 5 ticket simulations |
-| Result | 5 tickets created, 4 closed in 9 to 15 minutes, 1 replied to and left open pending the customer |
-| Honest note | SLA plans and the new departments were created but not applied — every shown ticket used the Default SLA |
-| Report | [📄 README](./Project-1-Real-Ticketing-System-Deployment/README.md) · [🗂️ Visual Index](./Project-1-Real-Ticketing-System-Deployment/Osticket-INDEX.md) |
+<table>
+<tr><td width="20%"><b>🖧 Environment</b></td><td>Azure VM, Ubuntu 24.04, Apache, MySQL, PHP, osTicket v1.18.1</td></tr>
+<tr><td><b>🔧 Work Performed</b></td><td>LAMP stack install → osTicket web installer → SLA plans &amp; departments → 5 ticket simulations</td></tr>
+<tr><td><b>✅ Result</b></td><td>5 tickets created, 4 closed in 9 to 15 minutes, 1 replied to and left open pending the customer</td></tr>
+<tr><td><b>⚠️ Honest Note</b></td><td>SLA plans and the new departments were created but not applied — every shown ticket used the Default SLA</td></tr>
+</table>
+
+<div align="center">
+
+**[📄 Full README](./Project-1-Real-Ticketing-System-Deployment/README.md)** · **[🗂️ Visual Index](./Project-1-Real-Ticketing-System-Deployment/Osticket-INDEX.md)**
+
+</div>
 
 ---
 
 <a id="project-02"></a>
 ## 📧 Project 02 — Live Email Authentication Audit
 
+<div align="center">
+
+![SPF](https://img.shields.io/badge/SPF-2EA043?style=flat-square)
+![DKIM](https://img.shields.io/badge/DKIM-4A3FA6?style=flat-square)
+![DMARC](https://img.shields.io/badge/DMARC-C6501F?style=flat-square)
+![DNS](https://img.shields.io/badge/DNS-1D5B8F?style=flat-square)
+![MxToolbox](https://img.shields.io/badge/MxToolbox-0078D6?style=flat-square)
+![Gmail](https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=gmail&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=flat-square)
+
+</div>
+
 **Goal:** Passively audit how real organizations protect their domains from email spoofing, then check the same protections inside a real inbox.
 
-| Item | Value |
-|---|---|
-| Environment | MxToolbox SuperTool, Gmail "Show Original" |
-| Work performed | SPF + DMARC lookups on 10 domains across fintech, banking, government, telecom, education and small business, plus SPF/DKIM/DMARC results from 4 real inbox emails |
-| Result | 20 DNS records checked, 4 headers analyzed, every domain scored on the same rules (`-all`/`~all`, `p=none`/`p=quarantine`/`p=reject`) |
-| Honest note | The 4 email senders were not among the 10 audited domains, so the headers don't test the DNS findings; DKIM wasn't checked per domain |
-| Report | [📄 README](./Project-2-Live-Email-Security-Audit/README.md) · [🗂️ Visual Index](./Project-2-Live-Email-Security-Audit/Email-Audit-INDEX.md) |
+<table>
+<tr><td width="20%"><b>🖧 Environment</b></td><td>MxToolbox SuperTool, Gmail "Show Original"</td></tr>
+<tr><td><b>🔧 Work Performed</b></td><td>SPF + DMARC lookups on 10 domains across fintech, banking, government, telecom, education and small business, plus SPF/DKIM/DMARC results from 4 real inbox emails</td></tr>
+<tr><td><b>✅ Result</b></td><td>20 DNS records checked, 4 headers analyzed, every domain scored on the same rules (<code>-all</code>/<code>~all</code>, <code>p=none</code>/<code>p=quarantine</code>/<code>p=reject</code>)</td></tr>
+<tr><td><b>⚠️ Honest Note</b></td><td>The 4 email senders were not among the 10 audited domains, so the headers don't test the DNS findings; DKIM wasn't checked per domain</td></tr>
+</table>
+
+<div align="center">
+
+**[📄 Full README](./Project-2-Live-Email-Security-Audit/README.md)** · **[🗂️ Visual Index](./Project-2-Live-Email-Security-Audit/Email-Audit-INDEX.md)**
+
+</div>
 
 ---
 
 <a id="project-03"></a>
 ## 🦈 Project 03 — Wireshark Packet Capture Case Studies
 
+<div align="center">
+
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=flat-square&logo=wireshark&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
+![DNS](https://img.shields.io/badge/DNS-2EA043?style=flat-square)
+![TCP](https://img.shields.io/badge/TCP-4A3FA6?style=flat-square)
+![ARP](https://img.shields.io/badge/ARP-C6501F?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=flat-square)
+
+</div>
+
 **Goal:** Capture real network problems live and diagnose them by reading the packets themselves, not a symptom description.
 
-| Item | Value |
-|---|---|
-| Environment | Wireshark 4.6.8, Windows, Wi-Fi interface |
-| Work performed | Live capture and packet-level read of a DNS lookup failure, TCP retransmissions during a large download, and Windows' ARP duplicate-IP check |
-| Result | 3 case studies, 860,523 packets captured, 6 display filters used |
-| Honest note | Case 3 (ARP) did not produce a real IP conflict, because only one device was used |
-| Report | [📄 README](./Project-3-Wireshark-Packet-Capture-Case-Studies/README.md) · [🗂️ Visual Index](./Project-3-Wireshark-Packet-Capture-Case-Studies/Wireshark-INDEX.md) |
+<table>
+<tr><td width="20%"><b>🖧 Environment</b></td><td>Wireshark 4.6.8, Windows, Wi-Fi interface</td></tr>
+<tr><td><b>🔧 Work Performed</b></td><td>Live capture and packet-level read of a DNS lookup failure, TCP retransmissions during a large download, and Windows' ARP duplicate-IP check</td></tr>
+<tr><td><b>✅ Result</b></td><td>3 case studies, 860,523 packets captured, 6 display filters used</td></tr>
+<tr><td><b>⚠️ Honest Note</b></td><td>Case 3 (ARP) did not produce a real IP conflict, because only one device was used</td></tr>
+</table>
+
+<div align="center">
+
+**[📄 Full README](./Project-3-Wireshark-Packet-Capture-Case-Studies/README.md)** · **[🗂️ Visual Index](./Project-3-Wireshark-Packet-Capture-Case-Studies/Wireshark-INDEX.md)**
+
+</div>
 
 ---
 
 <a id="project-04"></a>
 ## 🔧 Project 04 — Open-Source Contribution (Uptime Kuma)
 
+<div align="center">
+
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
+![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
+![Status](https://img.shields.io/badge/Status-PR_Open-yellow?style=flat-square)
+
+</div>
+
 **Goal:** Take a real bug on a popular self-hosted monitoring tool from GitHub issue to a submitted, rule-following pull request.
 
-| Item | Value |
-|---|---|
-| Environment | `louislam/uptime-kuma` fork, Vue 3, Vite, Node.js v24.14.1, Git Bash |
-| Work performed | Forked and ran the project locally, traced Issue #7062 to one method, fixed it, opened PR #7882 under the project's `CONTRIBUTING.md` rules |
-| Result | 1 file changed, 14 lines added, 7 removed; PR open with checks passed, awaiting review |
-| Honest note | Not merged and not formally reviewed. The failing behavior was never captured live on screen, so the cause comes from reading the code |
-| Report | [📄 README](./Project-4-Uptime-Kuma-Open-Source-Contribution/README.md) · [🗂️ Visual Index](./Project-4-Uptime-Kuma-Open-Source-Contribution/INDEX.md) · [🔗 PR #7882](https://github.com/louislam/uptime-kuma/pull/7882) |
+<table>
+<tr><td width="20%"><b>🖧 Environment</b></td><td><code>louislam/uptime-kuma</code> fork, Vue 3, Vite, Node.js v24.14.1, Git Bash</td></tr>
+<tr><td><b>🔧 Work Performed</b></td><td>Forked and ran the project locally, traced Issue #7062 to one method, fixed it, opened PR #7882 under the project's <code>CONTRIBUTING.md</code> rules</td></tr>
+<tr><td><b>✅ Result</b></td><td>1 file changed, 14 lines added, 7 removed; PR open with checks passed, awaiting review</td></tr>
+<tr><td><b>⚠️ Honest Note</b></td><td>Not merged and not formally reviewed. The failing behavior was never captured live on screen, so the cause comes from reading the code</td></tr>
+</table>
+
+<div align="center">
+
+**[📄 Full README](./Project-4-Uptime-Kuma-Open-Source-Contribution/README.md)** · **[🗂️ Visual Index](./Project-4-Uptime-Kuma-Open-Source-Contribution/INDEX.md)** · **[🔗 View Pull Request #7882](https://github.com/louislam/uptime-kuma/pull/7882)**
+
+</div>
 
 ---
 
