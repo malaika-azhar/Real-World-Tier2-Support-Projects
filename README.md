@@ -1,20 +1,21 @@
 <div align="center">
 
-# 🧰 Real-World Tier-2 Support Projects
+# 🛠️ Real-World Tier-2 Support Projects
 
 **Tier-2 IT Support and Networking Portfolio — 4 Projects**
 
 A helpdesk built on Azure, a live email-security audit, packet-capture case studies, and an open-source bug fix.
 
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![osTicket](https://img.shields.io/badge/osTicket-F4740E?style=for-the-badge)
-![SPF DKIM DMARC](https://img.shields.io/badge/SPF_·_DKIM_·_DMARC-2EA043?style=for-the-badge)
-![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![Projects](https://img.shields.io/badge/Projects-4-4A3FA6?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge)
+![osTicket](https://img.shields.io/badge/Helpdesk-osTicket-F4740E?style=for-the-badge)
+![DNS](https://img.shields.io/badge/Email_Auth-SPF_DKIM_DMARC-2EA043?style=for-the-badge)
+![Wireshark](https://img.shields.io/badge/Network-Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
+![GitHub](https://img.shields.io/badge/Open_Source-GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![Status](https://img.shields.io/badge/Projects-4_of_4-brightgreen?style=for-the-badge)
 
-Four end-to-end projects built with free tools and Azure for Students credit. Every result has a screenshot, and every limit of every project is written down.
+Four end-to-end projects, one thread: stand up a support system, then use it, defend it, diagnose it and contribute to one in the wild — from a helpdesk built on an empty Azure VM to an open pull request on a real open-source tool. Every result is backed by a screenshot, and every limit of the work is written down.
+
+### [📂 Jump to the projects](#projects-index)
 
 </div>
 
@@ -23,55 +24,45 @@ Four end-to-end projects built with free tools and Azure for Students credit. Ev
 ## 📑 Table of Contents
 
 1. [At a Glance](#at-a-glance)
-2. [About This Portfolio](#about)
-3. [The Four Projects](#the-four-projects)
-4. [Portfolio Map](#portfolio-map)
-5. [Project 01 — Ticketing System on Azure](#project-01)
-6. [Project 02 — Email Authentication Audit](#project-02)
-7. [Project 03 — Wireshark Case Studies](#project-03)
-8. [Project 04 — Uptime Kuma Contribution](#project-04)
+2. [About This Repo](#about)
+3. [Portfolio Map](#portfolio-map)
+4. [Environment & Tools](#environment)
+5. [Project 01 — Real Ticketing System Deployment](#project-01)
+6. [Project 02 — Live Email Authentication Audit](#project-02)
+7. [Project 03 — Wireshark Packet Capture Case Studies](#project-03)
+8. [Project 04 — Open-Source Contribution (Uptime Kuma)](#project-04)
 9. [A Tier-2 Ticket's Path](#ticket-path)
-10. [Skills Across the Projects](#skills)
-11. [How to Read the Projects](#how-to-read)
-12. [Limits Across the Portfolio](#limits)
-13. [Repo Structure](#repo-structure)
-14. [License](#license)
+10. [Coverage Snapshot](#coverage-snapshot)
+11. [Skills Across the Projects](#skills)
+12. [Verification, Not Assumption](#verification)
+13. [Scope & Limitations](#scope-limitations)
+14. [What I Learned](#what-i-learned)
+15. [Projects Index](#projects-index)
+16. [Repo Structure](#repo-structure)
 
 ---
 
 <a id="at-a-glance"></a>
 ## 📊 At a Glance
 
-| 📁 Projects | 🖼️ Screenshots | 🌐 Domains Audited | 📦 Packets Captured | 🐛 Pull Request | 💰 Cost |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| **4** | **103** | **10** | **860,523** | **#7882 (open)** | **Free tools + Azure student credit** |
+| 🧩 Projects | 🖼️ Screenshots | 🎫 Tickets Run | 🌐 Domains Audited | 📦 Packets Captured | 🐛 Pull Request | 💰 Cost |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **4** | **103** | **5** | **10** | **860,523** | **#7882 (open)** | **Free tools + Azure student credit** |
 
 ---
 
 <a id="about"></a>
-## 📖 About This Portfolio
+## 📖 About This Repo
 
 Tier-2 support starts where the first answer stops working. It means reading logs, packets, DNS records and code, and explaining what was found. These four projects practise that from four sides:
 
-- **Project 01:** Run the system that tickets live in, from an empty server.
-- **Project 02:** Check how real organizations protect their email, and read the results inside real mail.
-- **Project 03:** Prove network problems with real packets instead of guesses.
-- **Project 04:** Follow a bug from a public issue to a pull request in someone else's code.
+- **Project 01 — Real Ticketing System Deployment:** Build an IT helpdesk from an empty Azure VM, then run it — five tickets from customer submission to agent reply and closure.
+- **Project 02 — Live Email Authentication Audit:** Passively audit SPF and DMARC on 10 real domains, then check SPF/DKIM/DMARC results inside real inbox mail.
+- **Project 03 — Wireshark Packet Capture Case Studies:** Capture three real network problems live and read them packet by packet — a DNS failure, TCP retransmissions, and an ARP duplicate-IP check.
+- **Project 04 — Open-Source Contribution (Uptime Kuma):** Take a real GitHub issue on a popular self-hosted tool from report to traced bug to submitted pull request.
 
 > [!NOTE]
-> Each project keeps the same rules. A result is only written as done if a screenshot shows it. Anything taken from my own notes, with no screenshot behind it, is marked 📝, and the limits of each project are listed at the end of its README.
-
----
-
-<a id="the-four-projects"></a>
-## 🗂️ The Four Projects
-
-| # | Project | Main Tools | Result | Cost | Open |
-|:---:|---|---|---|:---:|:---:|
-| 01 | 🎫 **Ticketing System on Azure** | Azure VM, Ubuntu, Apache, MySQL, PHP, osTicket | 5 tickets run end to end, 4 closed and 1 left open | Azure student credit | [README](Project-1-Osticket-Helpdesk-Deployment/README.md) · [Index](Project-1-Osticket-Helpdesk-Deployment/Osticket-INDEX.md) |
-| 02 | 📧 **Email Authentication Audit** | MxToolbox, Gmail Show Original | SPF and DMARC of 10 domains scored, plus 4 real email headers | $0 | [README](Project-2-Live-Email-Security-Audit/README.md) · [Index](Project-2-Live-Email-Security-Audit/Email-Audit-INDEX.md) |
-| 03 | 🦈 **Wireshark Case Studies** | Wireshark 4.6.8 on Windows | DNS NXDOMAIN, TCP retransmission and ARP checks proven in packets | $0 | [README](Project-3-Wireshark-Packet-Capture-Case-Studies/README.md) · [Index](Project-3-Wireshark-Packet-Capture-Case-Studies/Wireshark-INDEX.md) |
-| 04 | 🔧 **Uptime Kuma Contribution** | Git, GitHub, Node.js, Vue 3 | Bug fixed in 1 file, pull request open with all checks passed | $0 | [README](Project-4-Uptime-Kuma-Open-Source-Contribution/README.md) · [Index](Project-4-Uptime-Kuma-Open-Source-Contribution/INDEX.md) |
+> Each project keeps the same rule: a result is only written as done if a screenshot shows it. Anything taken from notes, with no screenshot behind it, is marked 📝, and every project's limits are listed at the end of its own README.
 
 ---
 
@@ -102,70 +93,75 @@ flowchart TB
 
 ---
 
-<a id="project-01"></a>
-## 🎫 Project 01 — Ticketing System on Azure
+<a id="environment"></a>
+## 🖧 Environment & Tools
 
-**[Open the README](Project-1-Osticket-Helpdesk-Deployment/README.md)**
-
-A real IT helpdesk on a live Azure VM: Ubuntu, Apache, MySQL and PHP installed by hand, osTicket v1.18.1 set up through its web installer, SLA plans and departments configured, and five support tickets run from the customer portal to the agent panel.
-
-| | |
+| Area | Tools Used |
 |---|---|
-| **Built with** | Azure VM (Ubuntu 24.04), Apache, MySQL, PHP, osTicket v1.18.1 |
-| **Result** | 5 tickets created, 4 closed in 9 to 15 minutes, 1 replied to and left open |
-| **Setup** | 3 SLA plans and 6 departments, 4 help topics |
-| **Evidence** | 33 screenshots |
-| **Honest note** | The SLA plans and the new departments were created but no ticket used them, because nothing was linked to them |
+| **Cloud & Helpdesk** | Azure (Ubuntu 24.04 VM), Apache, MySQL, PHP, osTicket v1.18.1 |
+| **Email Authentication** | MxToolbox SuperTool (SPF/TXT lookup), Gmail "Show Original" |
+| **Network Analysis** | Wireshark 4.6.8, Windows |
+| **Open-Source Workflow** | Git, Git Bash (MINGW64), Vue 3, Vite, Node.js v24.14.1, Socket.IO, GitHub |
+
+---
+
+<a id="project-01"></a>
+## 🎫 Project 01 — Real Ticketing System Deployment
+
+**Goal:** Stand up a real helpdesk on a live Azure VM, then run it the way a support team would.
+
+| Item | Value |
+|---|---|
+| Environment | Azure VM, Ubuntu 24.04, Apache, MySQL, PHP, osTicket v1.18.1 |
+| Work performed | LAMP stack install → osTicket web installer → SLA plans & departments → 5 ticket simulations |
+| Result | 5 tickets created, 4 closed in 9 to 15 minutes, 1 replied to and left open pending the customer |
+| Honest note | SLA plans and the new departments were created but not applied — every shown ticket used the Default SLA |
+| Report | [📄 README](./Project-1-Real-Ticketing-System-Deployment/README.md) · [🗂️ Visual Index](./Project-1-Real-Ticketing-System-Deployment/Osticket-INDEX.md) |
 
 ---
 
 <a id="project-02"></a>
-## 📧 Project 02 — Email Authentication Audit
+## 📧 Project 02 — Live Email Authentication Audit
 
-**[Open the README](Project-2-Live-Email-Security-Audit/README.md)**
+**Goal:** Passively audit how real organizations protect their domains from email spoofing, then check the same protections inside a real inbox.
 
-A passive, read-only audit of the SPF and DMARC records of 10 real domains (global companies, Pakistani banks, telecoms, government, education and small businesses), plus a look at SPF, DKIM and DMARC results inside 4 real emails from my own inbox.
-
-| | |
+| Item | Value |
 |---|---|
-| **Built with** | MxToolbox SuperTool, Gmail Show Original |
-| **Result** | 20 records read (10 SPF and 10 DMARC), 4 headers analyzed, every domain scored on the same rules |
-| **Main finding** | Banks and global companies use `p=reject`. Telecom and education stop at `p=quarantine`. Both small businesses publish a bare `p=none` with no reports |
-| **Evidence** | 24 screenshots |
-| **Honest note** | The 4 email senders were not among the 10 domains, so the headers do not test the DNS results. DKIM was not checked per domain |
+| Environment | MxToolbox SuperTool, Gmail "Show Original" |
+| Work performed | SPF + DMARC lookups on 10 domains across fintech, banking, government, telecom, education and small business, plus SPF/DKIM/DMARC results from 4 real inbox emails |
+| Result | 20 DNS records checked, 4 headers analyzed, every domain scored on the same rules (`-all`/`~all`, `p=none`/`p=quarantine`/`p=reject`) |
+| Honest note | The 4 email senders were not among the 10 audited domains, so the headers don't test the DNS findings; DKIM wasn't checked per domain |
+| Report | [📄 README](./Project-2-Live-Email-Security-Audit/README.md) · [🗂️ Visual Index](./Project-2-Live-Email-Security-Audit/Email-Audit-INDEX.md) |
 
 ---
 
 <a id="project-03"></a>
-## 🦈 Project 03 — Wireshark Case Studies
+## 🦈 Project 03 — Wireshark Packet Capture Case Studies
 
-**[Open the README](Project-3-Wireshark-Packet-Capture-Case-Studies/README.md)**
+**Goal:** Capture real network problems live and diagnose them by reading the packets themselves, not a symptom description.
 
-Three common network failures reproduced on one Windows PC and proven with real packets: a DNS lookup that fails, TCP data that is sent again, and Windows checking that an IP address is free.
-
-| | |
+| Item | Value |
 |---|---|
-| **Built with** | Wireshark 4.6.8 on Windows |
-| **Result** | DNS reply code NXDOMAIN (`0x8183`), a Fast Retransmission on a 1 GB download, and an ARP Probe and Announcement |
-| **Scale** | 860,523 packets captured, 6 display filters used |
-| **Evidence** | 26 screenshots |
-| **Honest note** | Case 3 did not produce a real IP conflict, because only one device was used |
+| Environment | Wireshark 4.6.8, Windows, Wi-Fi interface |
+| Work performed | Live capture and packet-level read of a DNS lookup failure, TCP retransmissions during a large download, and Windows' ARP duplicate-IP check |
+| Result | 3 case studies, 860,523 packets captured, 6 display filters used |
+| Honest note | Case 3 (ARP) did not produce a real IP conflict, because only one device was used |
+| Report | [📄 README](./Project-3-Wireshark-Packet-Capture-Case-Studies/README.md) · [🗂️ Visual Index](./Project-3-Wireshark-Packet-Capture-Case-Studies/Wireshark-INDEX.md) |
 
 ---
 
 <a id="project-04"></a>
-## 🔧 Project 04 — Uptime Kuma Contribution
+## 🔧 Project 04 — Open-Source Contribution (Uptime Kuma)
 
-**[Open the README](Project-4-Uptime-Kuma-Open-Source-Contribution/README.md)** · **[View the Pull Request](https://github.com/louislam/uptime-kuma/pull/7882)**
+**Goal:** Take a real bug on a popular self-hosted monitoring tool from GitHub issue to a submitted, rule-following pull request.
 
-A real bug on `louislam/uptime-kuma` taken from issue [#7062](https://github.com/louislam/uptime-kuma/issues/7062) to a pull request: forked, run locally, traced to one method, fixed, and submitted under the project's own rules.
-
-| | |
+| Item | Value |
 |---|---|
-| **Built with** | Git, GitHub, Node.js, Vue 3, Vite |
-| **Result** | 1 file changed (+14, −7). PR #7882 is open with 18 checks passed and 1 neutral |
-| **Evidence** | 20 screenshots |
-| **Honest note** | Not merged and not formally reviewed. The failing drag was never captured on screen, so the cause comes from reading the code |
+| Environment | `louislam/uptime-kuma` fork, Vue 3, Vite, Node.js v24.14.1, Git Bash |
+| Work performed | Forked and ran the project locally, traced Issue #7062 to one method, fixed it, opened PR #7882 under the project's `CONTRIBUTING.md` rules |
+| Result | 1 file changed, 14 lines added, 7 removed; PR open with checks passed, awaiting review |
+| Honest note | Not merged and not formally reviewed. The failing behavior was never captured live on screen, so the cause comes from reading the code |
+| Report | [📄 README](./Project-4-Uptime-Kuma-Open-Source-Contribution/README.md) · [🗂️ Visual Index](./Project-4-Uptime-Kuma-Open-Source-Contribution/INDEX.md) · [🔗 PR #7882](https://github.com/louislam/uptime-kuma/pull/7882) |
 
 ---
 
@@ -197,6 +193,19 @@ flowchart TB
 
 ---
 
+<a id="coverage-snapshot"></a>
+## 🌟 Coverage Snapshot
+
+| 🛡️ Domain | 📌 Where It Appears | ✅ What Was Demonstrated |
+|---|---|---|
+| Cloud Deployment & Helpdesk Admin | Project 01 | Azure VM provisioning, LAMP stack, osTicket install and configuration |
+| Ticket Lifecycle Management | Project 01 | SLA plans, departments, help-topic routing, customer-to-agent workflow |
+| Email Authentication (SPF/DKIM/DMARC) | Project 02 | DNS record auditing, policy-strength comparison, real inbox header inspection |
+| Packet-Level Network Troubleshooting | Project 03 | DNS failure, TCP retransmission, ARP conflict — read directly from captures |
+| Open-Source Contribution Workflow | Project 04 | Forking, local dev environment setup, bug tracing, PR submission under project rules |
+
+---
+
 <a id="skills"></a>
 ## 🛠️ Skills Across the Projects
 
@@ -215,33 +224,57 @@ flowchart TB
 
 ---
 
-<a id="how-to-read"></a>
-## 🔎 How to Read the Projects
+<a id="verification"></a>
+## ✅ Verification, Not Assumption
 
-| Mark | Meaning |
-|:---:|---|
-| ✅ | The step or result is shown in a screenshot |
-| 📝 | Taken from my own notes, with no screenshot behind it |
-| 🎯 | A finding or result drawn from the evidence |
-| 🔍 | An Analyst Note: how it would be handled in production |
-| **Exhibit N** | The Nth numbered screenshot, kept in the project's `Screenshots` folder |
+A rule that holds across all four projects: a claim is not made until it is backed by direct evidence.
 
-- **Two files per project.** The `README.md` has the full write-up. The `INDEX` file is a visual index of the same evidence.
-- **Diagrams are illustrative.** They show the logic or the path. The screenshots and the projects themselves are the evidence.
-- **Green and dashed boxes.** In the diagrams, green shows what the evidence showed. Dashed boxes are other outcomes that did not happen in that project.
+| Check | Method | Outcome |
+|---|---|---|
+| Ticket actually reached the agent panel | Screenshot of the ticket in the staff panel, not just the submission form | ✅ Confirmed (Project 01) |
+| A domain's SPF/DMARC claim is real | Direct MxToolbox lookup against the domain's own DNS, not a third-party summary | ✅ Confirmed (Project 02) |
+| A network fault was reproduced, not assumed | Captured live in Wireshark and read frame by frame | ✅ Confirmed (Project 03) |
+| The bug fix actually works | Run locally against the reproduced issue before opening the PR | ✅ Confirmed (Project 04) |
 
 ---
 
-<a id="limits"></a>
-## 🚧 Limits Across the Portfolio
+<a id="scope-limitations"></a>
+## 🚧 Scope & Limitations
 
 - **Lab and public data only.** No project touched a real customer, a live company network or a private system. Project 02 is passive and read-only.
-- **Simulated roles.** In Project 01 the customer and the agent are both me, so nothing was confirmed by a real customer.
-- **One case is not a rule.** Small samples (2 small businesses, 4 emails, 5 tickets, 1 pull request) show a pattern, not a proof.
-- **Some things are still open.** The Uptime Kuma pull request is not merged, Case 3 in Project 03 saw no real conflict, and DKIM was not checked per domain in Project 02.
-- **Cost.** Project 01 ran on an Azure for Students credit. The other three used free tools only.
+- **Project 01:** Simulation only — the customer and the agent are both me. One ticket (#894015, forgot password) was replied to but left open, matching real practice: a reply is not a fix until the customer confirms it.
+- **Project 02:** Small sample (2 small businesses, 4 emails) shows a pattern, not a proof; DKIM wasn't checked per domain.
+- **Project 03:** Root causes are diagnosed from traffic captured on one Windows PC; no external network infrastructure was tested end to end, and Case 3 saw no real ARP conflict.
+- **Project 04:** PR #7882 was open and awaiting maintainer review at the time of writing — the fix is verified locally but not yet confirmed merged upstream.
 
-Each project lists its own limits in detail, so the results show what was actually proven.
+These gaps are marked here instead of hidden, so the projects reflect exactly what was done and what remains open.
+
+---
+
+<a id="what-i-learned"></a>
+## 🧠 What I Learned
+
+- **Where a command runs matters.** The same command can succeed over SSH and fail on a local machine — check the prompt before typing.
+- **A control that exists is not the same as a control that's enforced.** SLA plans and departments existed but weren't wired into the ticket flow — configuration isn't delivery.
+- **DNS policy has degrees, not a pass/fail.** `-all` and `~all`, or `p=reject` and `p=none`, protect very differently even though both "have SPF" or "have DMARC".
+- **A packet capture answers questions a symptom description can't.** "The internet is slow" and "1,400 retransmissions on this stream" are very different starting points.
+- **Open-source rules are the actual spec.** Reading `CONTRIBUTING.md` before writing code avoided wasted work on a PR that wouldn't have been accepted as-is.
+- **Do not close what you cannot confirm.** A reply is not a resolution, and a submitted PR is not a merged fix — both are recorded as still open.
+
+---
+
+<a id="projects-index"></a>
+## 📂 Projects Index
+
+| # | Project | Stack | Status |
+|:---:|---|---|:---:|
+| 1 | [🎫 Real Ticketing System Deployment](./Project-1-Real-Ticketing-System-Deployment/README.md) | Azure · Ubuntu · Apache · MySQL · PHP · osTicket | ✅ Complete |
+| 2 | [📧 Live Email Authentication Audit](./Project-2-Live-Email-Security-Audit/README.md) | SPF · DKIM · DMARC · DNS · MxToolbox · Gmail | ✅ Complete |
+| 3 | [🦈 Wireshark Packet Capture Case Studies](./Project-3-Wireshark-Packet-Capture-Case-Studies/README.md) | Wireshark · DNS · TCP · ARP | ✅ Complete |
+| 4 | [🔧 Open-Source Contribution — Uptime Kuma](./Project-4-Uptime-Kuma-Open-Source-Contribution/README.md) | Vue.js · Node.js · Vite · GitHub | 🟡 PR Open |
+
+> [!NOTE]
+> Folder names above follow the Project-4 naming pattern confirmed in the repo (`Project-4-Uptime-Kuma-Open-Source-Contribution`). Confirm Projects 1–3's exact folder names match before committing.
 
 ---
 
@@ -250,9 +283,8 @@ Each project lists its own limits in detail, so the results show what was actual
 
 ```text
 Real-World-Tier2-Support-Projects/
-|-- README.md
-|-- LICENSE
-|-- Project-1-Osticket-Helpdesk-Deployment/
+|-- README.md                                        <- you are here
+|-- Project-1-Real-Ticketing-System-Deployment/
 |   |-- README.md
 |   |-- Osticket-INDEX.md
 |   `-- Screenshots/
@@ -270,15 +302,8 @@ Real-World-Tier2-Support-Projects/
     `-- Screenshots/
 ```
 
----
-
-<a id="license"></a>
-## 📄 License
-
-Released under the [MIT License](LICENSE).
-
 <div align="center">
 
-🎫 **[Project 01](Project-1-Osticket-Helpdesk-Deployment/README.md)** · 📧 **[Project 02](Project-2-Live-Email-Security-Audit/README.md)** · 🦈 **[Project 03](Project-3-Wireshark-Packet-Capture-Case-Studies/README.md)** · 🔧 **[Project 04](Project-4-Uptime-Kuma-Open-Source-Contribution/README.md)** · 🧭 **[Ticket Path](#ticket-path)**
+🎫 **[osTicket](https://osticket.com)** · 🌐 **[MxToolbox](https://mxtoolbox.com)** · 🦈 **[Wireshark](https://www.wireshark.org)** · 🔧 **[Uptime Kuma](https://github.com/louislam/uptime-kuma)** · 🧭 **[Ticket Path](#ticket-path)**
 
 </div>
